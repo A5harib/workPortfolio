@@ -1,7 +1,125 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react";
+import {
+  ArrowUpRight,
+  Mail,
+  MapPin,
+  Phone,
+  Loader2,
+  CheckCircle2,
+} from "lucide-react";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
+
+function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("idle"); // idle, loading, success, error
+
+  const sendContact = useMutation(api.contacts.send);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("loading");
+    try {
+      await sendContact(formData);
+      setStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setStatus("idle"), 5000);
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+    }
+  };
+
+  if (status === "success") {
+    return (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="h-full flex flex-col items-center justify-center border-technical p-12 bg-accent/5"
+      >
+        <CheckCircle2 size={48} className="text-accent mb-6" />
+        <h3 className="text-editorial text-3xl mb-2 font-bold tracking-tighter">
+          Transmission Sent
+        </h3>
+        <p className="font-mono text-sm opacity-60">
+          I'll get back to you shortly.
+        </p>
+      </motion.div>
+    );
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="space-y-2">
+          <label className="font-mono text-[10px] uppercase opacity-40">
+            Full Name
+          </label>
+          <input
+            required
+            type="text"
+            placeholder="ASHARIB HASHMI"
+            className="w-full bg-transparent border-b-technical py-4 font-mono text-sm focus:outline-none focus:border-accent transition-colors uppercase placeholder:opacity-20"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+          />
+        </div>
+        <div className="space-y-2">
+          <label className="font-mono text-[10px] uppercase opacity-40">
+            Email Address
+          </label>
+          <input
+            required
+            type="email"
+            placeholder="ASHARIB@DEV.IO"
+            className="w-full bg-transparent border-b-technical py-4 font-mono text-sm focus:outline-none focus:border-accent transition-colors uppercase placeholder:opacity-20"
+            value={formData.email}
+            onChange={(e) =>
+              setFormData({ ...formData, email: e.target.value })
+            }
+          />
+        </div>
+      </div>
+      <div className="space-y-2">
+        <label className="font-mono text-[10px] uppercase opacity-40">
+          Message
+        </label>
+        <textarea
+          required
+          rows={4}
+          placeholder="DESCRIBE YOUR VISION..."
+          className="w-full bg-transparent border-b-technical py-4 font-mono text-sm focus:outline-none focus:border-accent transition-colors uppercase placeholder:opacity-20 resize-none"
+          value={formData.message}
+          onChange={(e) =>
+            setFormData({ ...formData, message: e.target.value })
+          }
+        />
+      </div>
+      <button
+        disabled={status === "loading"}
+        className="w-full md:w-auto px-12 py-5 bg-accent text-background font-mono text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition-all disabled:opacity-50 flex items-center justify-center gap-3 hover-trigger"
+      >
+        {status === "loading" ? (
+          <Loader2 className="animate-spin" size={16} />
+        ) : (
+          "Initiate Contact"
+        )}
+      </button>
+      {status === "error" && (
+        <p className="font-mono text-[10px] text-red-500 uppercase">
+          Transmission Failed. Please retry.
+        </p>
+      )}
+    </form>
+  );
+}
 
 const GithubIcon = ({ size = 20 }) => (
   <svg
@@ -334,6 +452,26 @@ export default function Home() {
               long-term resilience."
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="mb-64">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          <div className="lg:col-span-5">
+            <h2 className="text-editorial text-6xl md:text-8xl font-bold tracking-tighter mb-8">
+              Get <br /> <span className="text-accent italic">In Touch</span>
+            </h2>
+            <p className="font-mono text-sm opacity-60 leading-relaxed max-w-sm">
+              I am currently open to new opportunities, collaborations, and
+              architecture consultations. Drop a message to start the
+              conversation.
+            </p>
+          </div>
+
+          <div className="lg:col-span-7">
+            <ContactForm />
+          </div>
         </div>
       </section>
 

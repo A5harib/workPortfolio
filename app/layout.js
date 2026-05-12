@@ -1,5 +1,6 @@
 import { Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import { ConvexClientProvider } from "@/components/ConvexClientProvider";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -22,7 +23,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${playfair.variable} ${jetbrains.variable}`}>
       <body className="antialiased selection:bg-accent selection:text-background">
         <div className="grain-overlay" />
-        {children}
+        <ConvexClientProvider>{children}</ConvexClientProvider>
       </body>
     </html>
   );
