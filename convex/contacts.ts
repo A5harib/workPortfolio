@@ -1,4 +1,4 @@
-import { mutation } from "./_generated/server";
+import { mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
 export const send = mutation({
@@ -12,7 +12,14 @@ export const send = mutation({
       name: args.name,
       email: args.email,
       message: args.message,
+      createdAt: Date.now(),
     });
     return contactId;
+  },
+});
+
+export const list = query({
+  handler: async (ctx) => {
+    return await ctx.db.query("contacts").order("desc").collect();
   },
 });

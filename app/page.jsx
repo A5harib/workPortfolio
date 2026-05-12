@@ -246,7 +246,7 @@ export default function Home() {
             Asharib <span className="text-accent">Hashmi</span>
           </h1>
         </motion.div>
-        <motion.div {...fadeInUp} className="hidden md:block">
+        <motion.div {...fadeInUp} className="hidden md:flex items-center gap-12">
           <div className="flex gap-8 font-mono text-xs uppercase tracking-widest">
             <a href="#work" className="glitch-hover hover-trigger">
               Proof of Work
@@ -258,6 +258,12 @@ export default function Home() {
               Manifesto
             </a>
           </div>
+          <a
+            href="#contact"
+            className="px-6 py-3 border-technical hover:bg-accent hover:text-background transition-all font-mono text-xs uppercase tracking-widest hover-trigger"
+          >
+            Get in Touch
+          </a>
         </motion.div>
       </nav>
 

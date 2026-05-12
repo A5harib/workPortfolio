@@ -6,5 +6,6 @@ export default defineSchema({
     name: v.string(),
     email: v.string(),
     message: v.string(),
+    createdAt: v.optional(v.number()),
   }),
 });
