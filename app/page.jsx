@@ -206,7 +206,7 @@ const projects = [
     description:
       "Integrated Google Maps API for real-time vendor discovery and designed a comprehensive vendor dashboard.",
     tech: ["Google Maps API", "React", "Dashboard Design"],
-    link: "https://github.com/Asad-10x/oceanblue",
+    link: "https://oceanblue-two.vercel.app",
     color: "#F37324",
     textColor: "#16082B",
   },
