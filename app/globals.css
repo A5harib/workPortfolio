@@ -3,7 +3,6 @@
 :root {
   --background: #121212;
   --foreground: #f5f5f5;
-  --accent: #c0ff00;
   --accent-foreground: #121212;
   --muted: #2a2a2a;
   --muted-foreground: #a1a1a1;
@@ -28,8 +27,7 @@ body {
   color: var(--foreground);
   font-family: var(--font-mono);
   overflow-x: hidden;
-  selection-background-color: var(--accent);
-  selection-color: var(--background);
+  
 }
 
 /* Grain Effect */

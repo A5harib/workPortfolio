@@ -21,7 +21,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${playfair.variable} ${jetbrains.variable}`}>
-      <body className="antialiased selection:bg-accent selection:text-background">
+      <body className="antialiased selection:bg-white selection:text-black">
         <div className="grain-overlay" />
         <ConvexClientProvider>{children}</ConvexClientProvider>
       </body>

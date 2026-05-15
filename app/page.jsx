@@ -19,7 +19,7 @@ function ContactForm() {
     email: "",
     message: "",
   });
-  const [status, setStatus] = useState("idle"); // idle, loading, success, error
+  const [status, setStatus] = useState("idle");
 
   const sendContact = useMutation(api.contacts.send);
 
@@ -39,47 +39,50 @@ function ContactForm() {
 
   if (status === "success") {
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="h-full flex flex-col items-center justify-center border-technical p-12 bg-accent/5"
-      >
-        <CheckCircle2 size={48} className="text-accent mb-6" />
-        <h3 className="text-editorial text-3xl mb-2 font-bold tracking-tighter">
+      <div className="h-full flex flex-col items-center justify-center border-4 border-[#16082B] p-12 bg-[#FBCF0D] shadow-[8px_8px_0px_#16082B]">
+        <CheckCircle2
+          size={64}
+          strokeWidth={3}
+          className="text-[#16082B] mb-6"
+        />
+        <h3 className="font-serif text-4xl mb-2 font-black tracking-tighter text-[#16082B] uppercase">
           Transmission Sent
         </h3>
-        <p className="font-mono text-sm opacity-60">
-          I'll get back to you shortly.
+        <p className="font-mono text-lg font-bold text-[#16082B]">
+          AWAITING RESPONSE
         </p>
-      </motion.div>
+      </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-8 bg-[#FFF6DC] border-4 border-[#16082B] p-8 md:p-12 shadow-[12px_12px_0px_#16082B]"
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="space-y-2">
-          <label className="font-mono text-[10px] uppercase opacity-40">
+        <div className="flex flex-col">
+          <label className="font-mono text-sm font-black uppercase text-[#16082B] mb-2">
             Full Name
           </label>
           <input
             required
             type="text"
             placeholder="ASHARIB HASHMI"
-            className="w-full bg-transparent border-b-technical py-4 font-mono text-sm focus:outline-none focus:border-accent transition-colors uppercase placeholder:opacity-20"
+            className="w-full bg-white border-4 border-[#16082B] p-4 font-mono text-sm font-bold text-[#16082B] shadow-[4px_4px_0px_#16082B] focus:outline-none focus:bg-[#FBCF0D] focus:shadow-[6px_6px_0px_#E22359] transition-all uppercase placeholder:opacity-40"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           />
         </div>
-        <div className="space-y-2">
-          <label className="font-mono text-[10px] uppercase opacity-40">
+        <div className="flex flex-col">
+          <label className="font-mono text-sm font-black uppercase text-[#16082B] mb-2">
             Email Address
           </label>
           <input
             required
             type="email"
             placeholder="ASHARIB@DEV.IO"
-            className="w-full bg-transparent border-b-technical py-4 font-mono text-sm focus:outline-none focus:border-accent transition-colors uppercase placeholder:opacity-20"
+            className="w-full bg-white border-4 border-[#16082B] p-4 font-mono text-sm font-bold text-[#16082B] shadow-[4px_4px_0px_#16082B] focus:outline-none focus:bg-[#FBCF0D] focus:shadow-[6px_6px_0px_#E22359] transition-all uppercase placeholder:opacity-40"
             value={formData.email}
             onChange={(e) =>
               setFormData({ ...formData, email: e.target.value })
@@ -87,15 +90,15 @@ function ContactForm() {
           />
         </div>
       </div>
-      <div className="space-y-2">
-        <label className="font-mono text-[10px] uppercase opacity-40">
+      <div className="flex flex-col">
+        <label className="font-mono text-sm font-black uppercase text-[#16082B] mb-2">
           Message
         </label>
         <textarea
           required
-          rows={4}
+          rows={5}
           placeholder="DESCRIBE YOUR VISION..."
-          className="w-full bg-transparent border-b-technical py-4 font-mono text-sm focus:outline-none focus:border-accent transition-colors uppercase placeholder:opacity-20 resize-none"
+          className="w-full bg-white border-4 border-[#16082B] p-4 font-mono text-sm font-bold text-[#16082B] shadow-[4px_4px_0px_#16082B] focus:outline-none focus:bg-[#FBCF0D] focus:shadow-[6px_6px_0px_#E22359] transition-all uppercase placeholder:opacity-40 resize-none"
           value={formData.message}
           onChange={(e) =>
             setFormData({ ...formData, message: e.target.value })
@@ -104,49 +107,53 @@ function ContactForm() {
       </div>
       <button
         disabled={status === "loading"}
-        className="w-full md:w-auto px-12 py-5 bg-accent text-background font-mono text-xs font-bold uppercase tracking-[0.2em] hover:bg-white transition-all disabled:opacity-50 flex items-center justify-center gap-3 hover-trigger"
+        className="w-full py-6 bg-[#E22359] text-white border-4 border-[#16082B] shadow-[8px_8px_0px_#16082B] font-mono text-xl font-black uppercase tracking-[0.1em] hover:bg-[#F37324] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[6px_6px_0px_#16082B] active:translate-x-[8px] active:translate-y-[8px] active:shadow-none transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {status === "loading" ? (
-          <Loader2 className="animate-spin" size={16} />
+          <Loader2
+            className="animate-spin text-white"
+            size={24}
+            strokeWidth={3}
+          />
         ) : (
           "Initiate Contact"
         )}
       </button>
       {status === "error" && (
-        <p className="font-mono text-[10px] text-red-500 uppercase">
+        <div className="bg-[#16082B] text-[#FBCF0D] font-mono p-4 font-bold border-4 border-[#E22359] uppercase text-center">
           Transmission Failed. Please retry.
-        </p>
+        </div>
       )}
     </form>
   );
 }
 
-const GithubIcon = ({ size = 20 }) => (
+const GithubIcon = ({ size = 24 }) => (
   <svg
     width={size}
     height={size}
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
+    strokeWidth="3"
+    strokeLinecap="square"
+    strokeLinejoin="miter"
   >
     <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.28 1.15-.28 2.35 0 3.5-.73 1.02-1.08 2.25-1 3.5 0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
     <path d="M9 18c-4.51 2-5-2-7-2" />
   </svg>
 );
 
-const LinkedinIcon = ({ size = 20 }) => (
+const LinkedinIcon = ({ size = 24 }) => (
   <svg
     width={size}
     height={size}
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
+    strokeWidth="3"
+    strokeLinecap="square"
+    strokeLinejoin="miter"
   >
     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
     <rect width="4" height="12" x="2" y="9" />
@@ -164,6 +171,8 @@ const projects = [
       "Spearheaded a feature-rich property listing site with custom Admin Dashboard for real-time updates and analytics.",
     tech: ["Next.js", "React Native", "Tailwind CSS"],
     link: "https://www.hillcresthome-re.com/",
+    color: "#FBCF0D",
+    textColor: "#16082B",
   },
   {
     id: "02",
@@ -174,6 +183,8 @@ const projects = [
       "Built a partner directory for e-commerce giants including Amazon and eBay with real-time wallet integration.",
     tech: ["React", "Node.js", "MongoDB"],
     link: "https://todin.app/",
+    color: "#E22359",
+    textColor: "#FFF6DC",
   },
   {
     id: "03",
@@ -183,7 +194,9 @@ const projects = [
     description:
       "Optimized load speeds by 40% and built a custom 'One-Click' CMS for multi-media galleries.",
     tech: ["Image Optimization", "Next.js", "Custom CMS"],
-    link: "https://github.com/FHGROUPOC/Dr-Tauqeer-Imran",
+    link: "https://www.drtauqeerimran.com/",
+    color: "#8E007E",
+    textColor: "#FFF6DC",
   },
   {
     id: "04",
@@ -194,6 +207,8 @@ const projects = [
       "Integrated Google Maps API for real-time vendor discovery and designed a comprehensive vendor dashboard.",
     tech: ["Google Maps API", "React", "Dashboard Design"],
     link: "https://github.com/Asad-10x/oceanblue",
+    color: "#F37324",
+    textColor: "#16082B",
   },
 ];
 
@@ -222,300 +237,285 @@ const skills = {
   "Data Systems": ["MongoDB", "Supabase", "Convex", "PostgreSQL"],
 };
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-};
-
-const staggerContainer = {
-  animate: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
 export default function Home() {
   return (
-    <main className="min-h-screen p-6 md:p-12 lg:p-20 max-w-[1600px] mx-auto">
-      {/* Header / Nav */}
-      <nav className="flex justify-between items-start mb-32">
-        <motion.div {...fadeInUp}>
-          <h1 className="text-editorial text-4xl md:text-6xl font-bold tracking-tighter">
-            Asharib <span className="text-accent">Hashmi</span>
-          </h1>
-        </motion.div>
-        <motion.div {...fadeInUp} className="hidden md:flex items-center gap-12">
-          <div className="flex gap-8 font-mono text-xs uppercase tracking-widest">
-            <a href="#work" className="glitch-hover hover-trigger">
+    <main className="min-h-screen bg-[#FFF6DC] text-[#16082B] ">
+      <div className="border-b-4 border-[#16082B] bg-[#FBCF0D] px-6 py-2 flex items-center justify-between font-mono font-black uppercase text-xs md:text-sm tracking-widest relative z-50">
+        <span className="flex items-center gap-2">
+          <span className="w-3 h-3 bg-[#E22359] border-2 border-[#16082B] inline-block"></span>
+          System Online
+        </span>
+        <span className="hidden md:inline-block">Location: Lahore, PK</span>
+      </div>
+
+      <div className="p-6 md:p-12 lg:p-20 max-w-[1600px] mx-auto">
+        <nav className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-32">
+          <div className="border-4 border-[#16082B] bg-white p-4 shadow-[6px_6px_0px_#16082B]">
+            <h1 className="font-serif text-3xl md:text-5xl font-black tracking-tighter uppercase">
+              Asharib <span className="text-[#E22359]">Hashmi</span>
+            </h1>
+          </div>
+          <div className="flex flex-wrap items-center gap-4 md:gap-6">
+            <a
+              href="#work"
+              className="px-6 py-3 bg-[#FFF6DC] border-4 border-[#16082B] shadow-[4px_4px_0px_#16082B] font-mono text-sm font-black uppercase hover:bg-[#FBCF0D] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all"
+            >
+              Work
+            </a>
+            <a
+              href="#stack"
+              className="px-6 py-3 bg-[#FFF6DC] border-4 border-[#16082B] shadow-[4px_4px_0px_#16082B] font-mono text-sm font-black uppercase hover:bg-[#F37324] hover:text-white active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all"
+            >
+              Stack
+            </a>
+            <a
+              href="#contact"
+              className="px-8 py-3 bg-[#16082B] text-[#FBCF0D] border-4 border-[#16082B] shadow-[4px_4px_0px_#E22359] font-mono text-sm font-black uppercase active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all"
+            >
+              Contact
+            </a>
+          </div>
+        </nav>
+
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-48">
+          <div className="lg:col-span-8">
+            <div className="inline-block border-4 border-[#16082B] bg-[#E22359] text-white p-4 md:p-8 shadow-[12px_12px_0px_#16082B] mb-8 transform -rotate-2">
+              <h2 className="font-serif text-4xl md:text-8xl lg:text-[7rem] font-black leading-none tracking-tighter uppercase">
+                Full Stack
+              </h2>
+            </div>
+            <br />
+            <div className="inline-block border-4 border-[#16082B] bg-[#FBCF0D] p-4 md:p-8 shadow-[12px_12px_0px_#16082B] transform rotate-1">
+              <h2 className="font-serif text-5xl md:text-8xl lg:text-[8rem] font-black leading-none tracking-tighter uppercase text-[#16082B]">
+                Developer
+              </h2>
+            </div>
+          </div>
+          <div className="lg:col-span-4 flex flex-col justify-end">
+            <div className="border-4 border-[#16082B] bg-white p-8 shadow-[8px_8px_0px_#16082B]">
+              <p className="font-mono text-lg font-bold mb-8 uppercase leading-snug">
+                Based in Lahore, crafting high-performance web applications with
+                technical precision.
+              </p>
+              <div className="flex gap-4">
+                <a
+                  href="mailto:asharibhashmi7@gmail.com"
+                  className="p-4 bg-[#FFF6DC] border-4 border-[#16082B] text-[#16082B] shadow-[4px_4px_0px_#16082B] hover:bg-[#FBCF0D] active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all"
+                >
+                  <Mail size={24} strokeWidth={3} />
+                </a>
+                <a
+                  href="https://github.com/a5harib"
+                  className="p-4 bg-[#FFF6DC] border-4 border-[#16082B] text-[#16082B] shadow-[4px_4px_0px_#16082B] hover:bg-[#F37324] hover:text-white active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all"
+                >
+                  <GithubIcon size={24} />
+                </a>
+                <a
+                  href="https://linkedin.com/in/asharib-hashmi"
+                  className="p-4 bg-[#FFF6DC] border-4 border-[#16082B] text-[#16082B] shadow-[4px_4px_0px_#16082B] hover:bg-[#8E007E] hover:text-white active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all"
+                >
+                  <LinkedinIcon size={24} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="work" className="mb-48">
+          <div className="border-4 border-[#16082B] bg-[#FBCF0D] inline-block px-8 py-4 mb-16 shadow-[8px_8px_0px_#16082B]">
+            <h2 className="font-serif text-5xl md:text-7xl font-black uppercase tracking-tighter">
               Proof of Work
-            </a>
-            <a href="#stack" className="glitch-hover hover-trigger">
-              Technical Core
-            </a>
-            <a href="#about" className="glitch-hover hover-trigger">
-              Manifesto
-            </a>
-          </div>
-          <a
-            href="#contact"
-            className="px-6 py-3 border-technical hover:bg-accent hover:text-background transition-all font-mono text-xs uppercase tracking-widest hover-trigger"
-          >
-            Get in Touch
-          </a>
-        </motion.div>
-      </nav>
-
-      {/* Hero Section */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-64">
-        <div className="lg:col-span-8">
-          <motion.h2
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-editorial text-5xl md:text-8xl lg:text-9xl font-bold leading-[0.85] tracking-tighter mb-12"
-          >
-            Full <br />
-            Stack <br />
-            <span className="text-accent italic">Developer </span>
-          </motion.h2>
-        </div>
-        <div className="lg:col-span-4 flex flex-col justify-end">
-          <motion.div {...fadeInUp} className="border-l-technical pl-8 py-4">
-            <p className="font-mono text-lg mb-6 opacity-80 leading-relaxed">
-              Based in Lahore, Asharib crafts high-performance web applications
-              with technical precision and a Stoic approach to problem-solving.
-            </p>
-            <div className="flex gap-4">
-              <a
-                href="mailto:asharibhashmi7@gmail.com"
-                className="p-3 border-technical hover:bg-accent hover:text-background transition-colors hover-trigger"
-              >
-                <Mail size={20} />
-              </a>
-              <a
-                href="https://github.com/a5harib"
-                className="p-3 border-technical hover:bg-accent hover:text-background transition-colors hover-trigger"
-              >
-                <GithubIcon size={20} />
-              </a>
-              <a
-                href="https://linkedin.com/in/asharib-hashmi"
-                className="p-3 border-technical hover:bg-accent hover:text-background transition-colors hover-trigger"
-              >
-                <LinkedinIcon size={20} />
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Proof of Work Section */}
-      <section id="work" className="mb-64 relative">
-        <div className="absolute -left-12 top-0 hidden xl:block">
-          <span className="vertical-text text-editorial text-2xl opacity-20 tracking-widest">
-            PROOF OF WORK
-          </span>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border-accent border-technical">
-          {projects.map((project, i) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="bg-background p-8 md:p-12 hover:bg-muted/30 transition-colors group relative overflow-hidden"
-            >
-              <div className="flex justify-between items-start mb-12">
-                <span className="font-mono text-accent text-sm tracking-widest font-bold">
-                  [{project.id}]
-                </span>
-                <span className="font-mono text-[10px] uppercase opacity-40">
-                  {project.location}
-                </span>
-              </div>
-
-              <h3 className="text-editorial text-4xl md:text-5xl font-bold mb-4 group-hover:text-accent transition-colors">
-                {project.title}
-              </h3>
-              <p className="font-mono text-xs uppercase tracking-widest mb-6 opacity-60 italic">
-                {project.tagline}
-              </p>
-              <p className="font-mono text-sm opacity-80 mb-12 max-w-md leading-relaxed">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mb-12">
-                {project.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="text-[10px] font-mono border-technical px-2 py-1 opacity-60 group-hover:opacity-100 group-hover:border-accent transition-all"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              <a
-                href={project.link}
-                className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest border-b border-transparent hover:border-accent hover:text-accent transition-all hover-trigger"
-              >
-                View <ArrowUpRight size={14} />
-              </a>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Technical Core Section */}
-      <section id="stack" className="mb-64">
-        <div className="mb-20">
-          <h2 className="text-editorial text-6xl md:text-8xl font-bold tracking-tighter">
-            Technical <br /> <span className="text-accent">Core</span>
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {Object.entries(skills).map(([category, items], i) => (
-            <motion.div
-              key={category}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="border-t-technical pt-6"
-            >
-              <h4 className="font-mono text-xs uppercase tracking-[0.2em] mb-8 text-accent font-bold">
-                {category}
-              </h4>
-              <ul className="space-y-4">
-                {items.map((item) => (
-                  <li
-                    key={item}
-                    className="font-mono text-sm opacity-70 hover:opacity-100 hover:translate-x-2 transition-all duration-300"
-                  >
-                    — {item}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* Academic Foundation / About */}
-      <section
-        id="about"
-        className="grid grid-cols-1 lg:grid-cols-12 gap-20 mb-64"
-      >
-        <div className="lg:col-span-5">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="border-technical p-12 bg-accent/5"
-          >
-            <h3 className="text-editorial text-4xl mb-8">
-              Academic <br /> Foundation
-            </h3>
-            <p className="font-mono text-sm uppercase text-accent mb-2">
-              BS Software Engineering
-            </p>
-            <p className="font-mono text-xs opacity-60 mb-8">
-              University of Central Punjab, Lahore
-            </p>
-
-            <p className="font-mono text-sm opacity-80 leading-relaxed mb-8">
-              Focusing on Advanced Software Architecture and Database Systems.
-              Active member of the Cyber Security Society.
-            </p>
-
-            <div className="border-t-technical pt-6">
-              <p className="font-mono text-[10px] uppercase opacity-40 mb-2">
-                Key Project
-              </p>
-              <p className="font-mono text-sm italic">
-                "Data-driven MERN applications with a focus on API security."
-              </p>
-            </div>
-          </motion.div>
-        </div>
-        <div className="lg:col-span-7 flex flex-col justify-center">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-          >
-            <h3 className="text-editorial text-4xl mb-8 italic">
-              The Manifesto
-            </h3>
-            <p className="font-serif text-2xl md:text-3xl lg:text-4xl leading-tight opacity-90">
-              "Precision is not just a technical requirement; it's a philosophy.
-              In an age of digital noise, I build for clarity, performance, and
-              long-term resilience."
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section id="contact" className="mb-64">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-5">
-            <h2 className="text-editorial text-6xl md:text-8xl font-bold tracking-tighter mb-8">
-              Get <br /> <span className="text-accent italic">In Touch</span>
             </h2>
-            <p className="font-mono text-sm opacity-60 leading-relaxed max-w-sm">
-              I am currently open to new opportunities, collaborations, and
-              architecture consultations. Drop a message to start the
-              conversation.
-            </p>
           </div>
 
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+            {projects.map((project) => (
+              <div
+                key={project.id}
+                style={{
+                  backgroundColor: project.color,
+                  color: project.textColor,
+                }}
+                className="border-4 border-[#16082B] p-8 md:p-12 shadow-[12px_12px_0px_#16082B] hover:-translate-y-2 hover:translate-x-2 hover:shadow-[4px_20px_0px_#16082B] transition-all flex flex-col"
+              >
+                <div className="flex justify-between items-start mb-8 border-b-4 border-current pb-4">
+                  <span className="font-mono text-2xl font-black">
+                    [{project.id}]
+                  </span>
+                  <span className="font-mono text-sm font-bold uppercase px-3 py-1 border-2 border-current">
+                    {project.location}
+                  </span>
+                </div>
+
+                <h3 className="font-serif text-4xl md:text-4xl font-black uppercase mb-4 leading-none">
+                  {project.title}
+                </h3>
+                <p className="font-mono text-sm font-bold uppercase mb-6 bg-[#16082B] text-white self-start px-3 py-1">
+                  {project.tagline}
+                </p>
+                <p className="font-mono text-base font-bold mb-12 flex-grow">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-3 mb-12">
+                  {project.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="text-xs font-mono font-bold border-2 border-current px-3 py-1 uppercase bg-white text-[#16082B]"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+
+                <a
+                  href={project.link}
+                  style={{
+                    borderColor: project.textColor,
+                    color: project.textColor,
+                  }}
+                  className="inline-flex items-center justify-between w-full font-mono text-lg font-black uppercase border-4 bg-white/20 p-4 hover:bg-[#16082B] hover:border-[#16082B] hover:!text-white active:translate-x-[4px] active:translate-y-[4px] active:shadow-none transition-all"
+                >
+                  View <ArrowUpRight size={24} strokeWidth={3} />
+                </a>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="stack" className="mb-48">
+          <div className="border-4 border-[#16082B] bg-[#E22359] text-white inline-block px-8 py-4 mb-16 shadow-[8px_8px_0px_#16082B]">
+            <h2 className="font-serif text-5xl md:text-7xl font-black uppercase tracking-tighter">
+              Technical Core
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {Object.entries(skills).map(([category, items], i) => (
+              <div
+                key={category}
+                className="bg-white border-4 border-[#16082B] p-6 shadow-[8px_8px_0px_#16082B]"
+              >
+                <h4 className="font-mono text-sm font-black uppercase tracking-widest mb-6 border-b-4 border-[#16082B] pb-2 text-[#8E007E]">
+                  {category}
+                </h4>
+                <div className="flex flex-wrap gap-3">
+                  {items.map((item) => (
+                    <span
+                      key={item}
+                      className="font-mono text-sm font-bold border-2 border-[#16082B] bg-[#FFF6DC] px-2 py-1 shadow-[2px_2px_0px_#16082B]"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section
+          id="about"
+          className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-48"
+        >
+          <div className="lg:col-span-5">
+            <div className="bg-[#8E007E] text-[#FFF6DC] border-4 border-[#16082B] p-8 md:p-12 shadow-[12px_12px_0px_#16082B] h-full flex flex-col justify-center">
+              <h3 className="font-serif text-5xl font-black uppercase mb-8">
+                Foundation
+              </h3>
+              <div className="bg-white border-4 border-[#16082B] p-4 text-[#16082B] mb-8 shadow-[4px_4px_0px_#FBCF0D] transform -rotate-1">
+                <p className="font-mono text-xl font-black uppercase">
+                  BS Software Engineering
+                </p>
+                <p className="font-mono text-sm font-bold uppercase mt-2">
+                  University of Central Punjab
+                </p>
+              </div>
+              <p className="font-mono text-base font-bold leading-relaxed mb-8">
+                Advanced Software Architecture, Database Systems, Cyber
+                Security.
+              </p>
+              <div className="border-t-4 border-[#FFF6DC] pt-6 mt-auto">
+                <p className="font-mono text-xs font-black uppercase mb-2">
+                  Focus
+                </p>
+                <p className="font-mono text-sm font-bold bg-[#16082B] text-[#F37324] inline-block px-3 py-1">
+                  API Security & MERN Data-Flows
+                </p>
+              </div>
+            </div>
+          </div>
           <div className="lg:col-span-7">
-            <ContactForm />
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="border-t-technical pt-20 pb-10">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-12">
-          <div>
-            <p className="font-mono text-[10px] uppercase opacity-40 mb-4">
-              Availability
-            </p>
-            <p className="font-mono text-xl text-accent">
-              Open for Architecture & Development.
-            </p>
-          </div>
-
-          <div className="text-right">
-            <p className="font-mono text-[10px] uppercase opacity-40 mb-4">
-              Contact Detail
-            </p>
-            <div className="flex flex-col items-end gap-2 font-mono text-sm">
-              <span className="flex items-center gap-2">
-                asharibhashmi7@gmail.com <Mail size={14} />
+            <div className="bg-white border-4 border-[#16082B] p-8 md:p-16 shadow-[12px_12px_0px_#16082B] h-full flex flex-col justify-center">
+              <span className="font-mono text-2xl font-black text-[#E22359] mb-6 block">
+                // MANIFESTO
               </span>
-              <span className="flex items-center gap-2">
-                +92 332 4792043 <Phone size={14} />
+              <p className="font-serif text-3xl md:text-5xl font-black uppercase leading-tight text-[#16082B]">
+                Precision is not just a requirement; it's a philosophy. In an
+                age of digital noise, build for clarity, performance, and{" "}
+                <span className="bg-[#FBCF0D] px-2 border-2 border-[#16082B]">
+                  long-term resilience.
+                </span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" className="mb-32">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+            <div className="lg:col-span-5">
+              <div className="border-4 border-[#16082B] bg-[#F37324] inline-block px-8 py-4 mb-8 shadow-[8px_8px_0px_#16082B] transform rotate-2">
+                <h2 className="font-serif text-6xl md:text-8xl font-black uppercase tracking-tighter text-[#16082B]">
+                  Connect
+                </h2>
+              </div>
+              <div className="bg-white border-4 border-[#16082B] p-8 shadow-[8px_8px_0px_#16082B]">
+                <p className="font-mono text-lg font-bold uppercase leading-relaxed text-[#16082B]">
+                  Open to new opportunities, collaborations, and architecture
+                  consultations. State your requirements.
+                </p>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7">
+              <ContactForm />
+            </div>
+          </div>
+        </section>
+
+        <footer className="border-t-8 border-[#16082B] pt-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
+          <div className="bg-[#16082B] p-6 border-4 border-[#16082B] shadow-[6px_6px_0px_#FBCF0D]">
+            <p className="font-mono text-sm font-black uppercase text-white mb-2">
+              Status
+            </p>
+            <p className="font-mono text-xl font-black uppercase text-[#FBCF0D]">
+              Open for Architecture
+            </p>
+          </div>
+
+          <div className="bg-white p-6 border-4 border-[#16082B] shadow-[6px_6px_0px_#E22359] text-right">
+            <p className="font-mono text-sm font-black uppercase text-[#16082B] mb-4">
+              Terminal Endpoints
+            </p>
+            <div className="flex flex-col items-end gap-3 font-mono text-sm font-bold uppercase">
+              <span className="flex items-center gap-3 border-b-2 border-[#16082B] pb-1">
+                asharibhashmi7@gmail.com <Mail size={16} strokeWidth={3} />
               </span>
-              <span className="flex items-center gap-2">
-                Lahore, PK <MapPin size={14} />
+              <span className="flex items-center gap-3 border-b-2 border-[#16082B] pb-1">
+                +92 332 4792043 <Phone size={16} strokeWidth={3} />
+              </span>
+              <span className="flex items-center gap-3 border-b-2 border-[#16082B] pb-1">
+                Lahore, PK <MapPin size={16} strokeWidth={3} />
               </span>
             </div>
           </div>
-        </div>
+        </footer>
 
-        <div className="mt-20 flex justify-between items-center opacity-20 font-mono text-[10px] uppercase tracking-widest">
+        <div className="mt-12 border-4 border-[#16082B] bg-[#FBCF0D] p-4 flex justify-between items-center font-mono text-sm font-black uppercase tracking-widest text-[#16082B]">
           <span>© 2026 ASHARIB HASHMI</span>
           <span>STAY PRECISE.</span>
         </div>
-      </footer>
+      </div>
     </main>
   );
 }
