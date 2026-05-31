@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theme & Layout Metamorphosis — Portfolio Demos</title>
+  <!-- Tailwind CSS CDN for dashboard and mockups structure -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts integration for different layouts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,500;0,700;0,800;1,500&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@600;800&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col antialiased">
+
+  <!-- Dashboard Top Header Bar -->
+  <header class="bg-slate-950 border-b border-slate-800 py-4 px-8 flex justify-between items-center shadow-lg relative z-20 shrink-0">
+    <div class="flex items-center gap-4">
+      <div class="h-10 w-10 rounded-lg bg-indigo-500 flex items-center justify-center text-white font-black text-xl shadow-md">
+        M
+      </div>
+      <div>
+        <h1 class="text-lg font-extrabold tracking-tight text-white flex items-center gap-2">
+          Layout Metamorphosis <span class="text-xs bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded-full font-bold">Active Lab</span>
+        </h1>
+        <p class="text-xs text-slate-400">Rendering identical portfolio content into nine distinct website styles</p>
+      </div>
+    </div>
+    <div class="hidden sm:flex items-center gap-2 text-xs bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-md font-mono text-slate-300">
+      <span>File:</span> <span class="text-indigo-400 font-bold">version-demo.html</span>
+    </div>
+  </header>
+
+  <!-- Split Screen Workspace -->
+  <div class="flex-grow flex flex-col lg:flex-row min-h-0 overflow-hidden">
+    
+    <!-- LEFT SIDEBAR: Sticky Control Panel -->
+    <aside class="w-full lg:w-[420px] bg-slate-950 border-r border-slate-800 p-6 flex flex-col shrink-0 relative z-10 sticky top-[72px] lg:top-0 h-auto lg:h-[calc(100vh-72px)] overflow-y-auto space-y-6 shadow-xl lg:shadow-none">
+      
+      <!-- Niche Switcher Section -->
+      <section class="space-y-3">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400">Select Website Niche</h2>
+        <div class="grid grid-cols-1 gap-2" id="niche-selector-group">
+          <!-- Dynamically highlighted buttons -->
+          <button onclick="changeNiche('dashboard')" id="btn-dashboard" class="niche-btn w-full flex items-center justify-between p-3 rounded-lg border-2 bg-slate-900 border-indigo-500 text-white transition-all text-left">
+            <span class="flex items-center gap-2.5">
+              <span class="text-lg">📊</span>
+              <span class="text-xs font-bold uppercase tracking-wider">Analytical Dashboard</span>
+            </span>
+            <span class="text-[10px] bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded font-mono">SaaS console</span>
+          </button>
+          
+          <button onclick="changeNiche('ecommerce')" id="btn-ecommerce" class="niche-btn w-full flex items-center justify-between p-3 rounded-lg border-2 bg-slate-900/40 border-transparent text-slate-400 hover:text-slate-200 transition-all text-left">
+            <span class="flex items-center gap-2.5">
+              <span class="text-lg">🛒</span>
+              <span class="text-xs font-bold uppercase tracking-wider">E-Commerce Website</span>
+            </span>
+            <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono">Products store</span>
+          </button>
+          
+          <button onclick="changeNiche('skincare')" id="btn-skincare" class="niche-btn w-full flex items-center justify-between p-3 rounded-lg border-2 bg-slate-900/40 border-transparent text-slate-400 hover:text-slate-200 transition-all text-left">
+            <span class="flex items-center gap-2.5">
+              <span class="text-lg">🧴</span>
+              <span class="text-xs font-bold uppercase tracking-wider">Skincare Brandsite</span>
+            </span>
+            <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono">Luxury minimal</span>
+          </button>
+          
+          <button onclick="changeNiche('blog')" id="btn-blog" class="niche-btn w-full flex items-center justify-between p-3 rounded-lg border-2 bg-slate-900/40 border-transparent text-slate-400 hover:text-slate-200 transition-all text-left">
+            <span class="flex items-center gap-2.5">
+              <span class="text-lg">✍️</span>
+              <span class="text-xs font-bold uppercase tracking-wider">Blog / Magazine Site</span>
+            </span>
+            <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono">Editorial feed</span>
+          </button>
+          
+          <button onclick="changeNiche('recruitment')" id="btn-recruitment" class="niche-btn w-full flex items-center justify-between p-3 rounded-lg border-2 bg-slate-900/40 border-transparent text-slate-400 hover:text-slate-200 transition-all text-left">
+            <span class="flex items-center gap-2.5">
+              <span class="text-lg">💼</span>
+              <span class="text-xs font-bold uppercase tracking-wider">Recruitment Portal</span>
+            </span>
+            <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono">ATS candidate</span>
+          </button>
+          
+          <button onclick="changeNiche('realestate')" id="btn-realestate" class="niche-btn w-full flex items-center justify-between p-3 rounded-lg border-2 bg-slate-900/40 border-transparent text-slate-400 hover:text-slate-200 transition-all text-left">
+            <span class="flex items-center gap-2.5">
+              <span class="text-lg">🏠</span>
+              <span class="text-xs font-bold uppercase tracking-wider">Real Estate Portal</span>
+            </span>
+            <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono">Listing search</span>
+          </button>
+          
+          <button onclick="changeNiche('lms')" id="btn-lms" class="niche-btn w-full flex items-center justify-between p-3 rounded-lg border-2 bg-slate-900/40 border-transparent text-slate-400 hover:text-slate-200 transition-all text-left">
+            <span class="flex items-center gap-2.5">
+              <span class="text-lg">🎓</span>
+              <span class="text-xs font-bold uppercase tracking-wider">LMS Course Portal</span>
+            </span>
+            <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono">Classroom UI</span>
+          </button>
+          
+          <button onclick="changeNiche('content')" id="btn-content" class="niche-btn w-full flex items-center justify-between p-3 rounded-lg border-2 bg-slate-900/40 border-transparent text-slate-400 hover:text-slate-200 transition-all text-left">
+            <span class="flex items-center gap-2.5">
+              <span class="text-lg">📰</span>
+              <span class="text-xs font-bold uppercase tracking-wider">Content Wiki / News</span>
+            </span>
+            <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono">Dense portal</span>
+          </button>
+          
+          <button onclick="changeNiche('landing')" id="btn-landing" class="niche-btn w-full flex items-center justify-between p-3 rounded-lg border-2 bg-slate-900/40 border-transparent text-slate-400 hover:text-slate-200 transition-all text-left">
+            <span class="flex items-center gap-2.5">
+              <span class="text-lg">🚀</span>
+              <span class="text-xs font-bold uppercase tracking-wider">Landing Page / SaaS</span>
+            </span>
+            <span class="text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono">SaaS product</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Active Theme Metadata Card -->
+      <section class="bg-slate-900/60 border border-slate-800 rounded-xl p-5 space-y-4">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Active Design System</h3>
+        
+        <div class="space-y-3 text-xs">
+          <!-- Palette Swatches -->
+          <div class="space-y-1.5">
+            <span class="text-slate-500 font-bold uppercase block text-[10px]">Active Palette Colors</span>
+            <div class="flex gap-2" id="design-palette-colors">
+              <!-- Swatches injected via Javascript -->
+            </div>
+          </div>
+          
+          <!-- Typography Pairing -->
+          <div class="space-y-1.5">
+            <span class="text-slate-500 font-bold uppercase block text-[10px]">Typography Rules</span>
+            <p class="font-mono text-slate-300" id="design-typography-spec">Loading...</p>
+          </div>
+
+          <!-- Layout Strategy -->
+          <div class="space-y-1">
+            <span class="text-slate-500 font-bold uppercase block text-[10px]">Niche Restructuring Strategy</span>
+            <p class="text-slate-300 leading-relaxed font-sans" id="design-layout-strategy">Loading...</p>
+          </div>
+        </div>
+      </section>
+
+    </aside>
+
+    <!-- RIGHT CANVAS: Preview Viewport -->
+    <main class="flex-grow bg-slate-950 p-6 flex flex-col overflow-y-auto">
+      
+      <!-- Mockup Browser Header Chrome -->
+      <div class="bg-slate-900 border border-slate-800 border-b-0 rounded-t-xl py-3 px-4 flex items-center justify-between shadow-md shrink-0">
+        <div class="flex items-center gap-1.5">
+          <span class="h-3 w-3 bg-[#FF5F56] rounded-full inline-block"></span>
+          <span class="h-3 w-3 bg-[#FFBD2E] rounded-full inline-block"></span>
+          <span class="h-3 w-3 bg-[#27C93F] rounded-full inline-block"></span>
+        </div>
+        <div class="w-1/2 bg-slate-950 border border-slate-850 rounded-md py-1 px-3 text-center text-xs text-slate-400 font-mono truncate" id="browser-url-bar">
+          http://localhost:3000/analytical-dashboard
+        </div>
+        <div class="text-[10px] text-slate-500 font-bold uppercase tracking-wider font-mono">
+          Niche Sandbox
+        </div>
+      </div>
+      
+      <!-- Dynamic Layout Destination Canvas -->
+      <div class="flex-grow bg-slate-900 border border-slate-800 rounded-b-xl overflow-hidden shadow-2xl flex relative min-h-[500px]">
+        <div id="preview-canvas" class="w-full overflow-y-auto">
+          <!-- Rendered layout HTML is injected here -->
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Dynamic Content Metamorphosis Script -->
+  <script>
+    // Core data containing developer details. Remains 100% constant.
+    const portfolioData = {
+      name: "Asharib Hashmi",
+      title: "Full Stack Developer",
+      location: "Lahore, PK",
+      email: "asharibhashmi7@gmail.com",
+      phone: "+92 332 4792043",
+      bio: "Based in Lahore, crafting high-performance web applications with technical precision.",
+      skills: {
+        languages: ["TypeScript", "JavaScript (ES6+)", "Python", "HTML5", "CSS3"],
+        frontend: ["ReactJS", "Next.js (App Router)", "React Native", "Tailwind CSS", "Framer Motion"],
+        backend: ["Node.js", "Server Actions", "REST APIs", "Clerk", "NextAuth"],
+        data: ["MongoDB", "Supabase", "Convex", "PostgreSQL"]
+      },
+      projects: [
+        {
+          id: "01",
+          title: "Hillcrest Homes",
+          location: "Dubai",
+          tagline: "Digital Transformation for Real Estate",
+          description: "Spearheaded a feature-rich property listing site with custom Admin Dashboard for real-time updates and analytics.",
+          tech: ["Next.js", "React Native", "Tailwind CSS"],
+          price: 4500,
+          beds: 3,
+          baths: 2,
+          area: "1,850 sq ft",
+          uptime: "99.98%"
+        },
+        {
+          id: "02",
+          title: "Todin.app",
+          location: "Global",
+          tagline: "Cashback & Rewards Ecosystem",
+          description: "Built a partner directory for e-commerce giants including Amazon and eBay with real-time wallet integration.",
+          tech: ["React", "Node.js", "MongoDB"],
+          price: 6200,
+          beds: 4,
+          baths: 3,
+          area: "2,400 sq ft",
+          uptime: "99.95%"
+        },
+        {
+          id: "03",
+          title: "FH Group",
+          location: "Media Portal",
+          tagline: "High-Traffic Content Platform",
+          description: "Optimized load speeds by 40% and built a custom 'One-Click' CMS for multi-media galleries.",
+          tech: ["Next.js", "Custom CMS", "Image Optimization"],
+          price: 3800,
+          beds: 2,
+          baths: 1,
+          area: "1,150 sq ft",
+          uptime: "100.00%"
+        },
+        {
+          id: "04",
+          title: "Oceanblue",
+          location: "Marketplace",
+          tagline: "Location-Based Laundry Service",
+          description: "Integrated Google Maps API for real-time vendor discovery and designed a comprehensive vendor dashboard.",
+          tech: ["Google Maps API", "React", "Dashboard Design"],
+          price: 5000,
+          beds: 3,
+          baths: 2,
+          area: "1,550 sq ft",
+          uptime: "99.92%"
+        }
+      ],
+      manifesto: "Precision is not just a requirement; it's a philosophy. In an age of digital noise, build for clarity, performance, and long-term resilience.",
+      education: {
+        degree: "BS Software Engineering",
+        institution: "University of Central Punjab",
+        focus: "API Security & MERN Data-Flows"
+      }
+    };
+
+    // Niche configurations (meta descriptions, colors, and layouts)
+    const nicheConfigs = {
+      dashboard: {
+        url: "http://localhost:3000/console/dashboard",
+        swatches: ["#0B0F19", "#3B82F6", "#10B981", "#8B5CF6"],
+        typography: "Plus Jakarta Sans & Space Mono",
+        strategy: "Splits elements into standard SaaS widgets: a metrics panel, an active projects inventory, and a live cloud console reflecting status streams.",
+        render: () => {
+          return `
+            <div class="bg-[#0B0F19] text-slate-100 min-h-full font-sans flex flex-col md:flex-row">
+              <!-- Sidebar Navigation Panel -->
+              <div class="w-full md:w-64 bg-[#0F172A] border-b md:border-b-0 md:border-r border-slate-800 p-6 space-y-8">
+                <div class="flex items-center gap-3">
+                  <div class="h-8 w-8 bg-blue-500 rounded-md flex items-center justify-center text-white font-extrabold text-sm">C</div>
+                  <span class="font-mono text-sm tracking-wider font-extrabold text-white">SYSTEM CONSOLE</span>
+                </div>
+                <div class="space-y-2">
+                  <span class="text-[10px] text-slate-500 uppercase tracking-widest font-bold">Core Modules</span>
+                  <div class="space-y-1">
+                    <span class="flex items-center gap-3 bg-blue-500/10 text-blue-400 p-2 rounded text-xs font-semibold cursor-pointer">📊 Active Dossier</span>
+                    <span class="flex items-center gap-3 hover:bg-slate-800 text-slate-400 hover:text-slate-200 p-2 rounded text-xs transition cursor-pointer">📈 Tech Stack logs</span>
+                    <span class="flex items-center gap-3 hover:bg-slate-800 text-slate-400 hover:text-slate-200 p-2 rounded text-xs transition cursor-pointer">🔒 API Configs</span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Content Pane -->
+              <div class="flex-grow p-8 space-y-6 max-w-5xl">
+                <!-- Header -->
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-slate-800 pb-4 gap-4">
+                  <div>
+                    <h2 class="text-2xl font-black text-white">${portfolioData.name}</h2>
+                    <p class="text-xs text-slate-400 mt-1">${portfolioData.title} &mdash; Lahore PK</p>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="h-2 w-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                    <span class="text-xs font-mono text-emerald-400 font-bold bg-emerald-500/10 px-2.5 py-1 rounded">SYSTEM ONLINE</span>
+                  </div>
+                </div>
+
+                <!-- Stats Ticker Widget -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div class="bg-[#0F172A] border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+                    <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Completed Projects</span>
+                    <span class="text-2xl font-black text-white mt-1">04</span>
+                  </div>
+                  <div class="bg-[#0F172A] border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+                    <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">MERN Skills Logged</span>
+                    <span class="text-2xl font-black text-white mt-1">19</span>
+                  </div>
+                  <div class="bg-[#0F172A] border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+                    <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Active Uptime</span>
+                    <span class="text-2xl font-black text-emerald-400 mt-1">99.96%</span>
+                  </div>
+                  <div class="bg-[#0F172A] border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+                    <span class="text-[10px] uppercase font-bold text-slate-500 tracking-wider">Contact Request Status</span>
+                    <span class="text-2xl font-black text-purple-400 mt-1">Listening</span>
+                  </div>
+                </div>
+
+                <!-- Grid Layout: Table & logs -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                  
+                  <!-- Main Table -->
+                  <div class="lg:col-span-8 bg-[#0F172A] border border-slate-800 rounded-xl p-5 space-y-4">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-300">Deployments Status</h3>
+                    <div class="overflow-x-auto">
+                      <table class="w-full text-left text-xs font-mono">
+                        <thead>
+                          <tr class="border-b border-slate-800 text-slate-500">
+                            <th class="pb-2 font-bold uppercase">Project Code</th>
+                            <th class="pb-2 font-bold uppercase">Niche Area</th>
+                            <th class="pb-2 font-bold uppercase">Latency</th>
+                            <th class="pb-2 font-bold uppercase">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          ${portfolioData.projects.map(p => `
+                            <tr class="border-b border-slate-800/40 text-slate-300 last:border-b-0 hover:bg-slate-800/20">
+                              <td class="py-3 font-bold text-white">${p.title}</td>
+                              <td class="py-3">${p.tagline}</td>
+                              <td class="py-3 text-cyan-400">12ms</td>
+                              <td class="py-3 text-emerald-400 font-bold">${p.uptime}</td>
+                            </tr>
+                          `).join('')}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <!-- Right column: console output -->
+                  <div class="lg:col-span-4 bg-[#0F172A] border border-slate-800 rounded-xl p-5 flex flex-col space-y-3">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-300">Manifesto Console</h3>
+                    <div class="bg-black/60 font-mono text-[10px] text-slate-400 p-4 rounded-lg flex-grow border border-slate-900 leading-relaxed overflow-y-auto">
+                      <span class="text-yellow-400 font-bold">// INITIALIZING ARCHITECTURE</span><br>
+                      <span>$ portfolio init --precise</span><br>
+                      <span class="text-slate-300">"${portfolioData.manifesto}"</span><br><br>
+                      <span class="text-purple-400 font-bold">// ACADEMICS MODULE</span><br>
+                      <span>Degree: ${portfolioData.education.degree}</span><br>
+                      <span>Inst: ${portfolioData.education.institution}</span><br>
+                      <span>Focus: ${portfolioData.education.focus}</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          `;
+        }
+      },
+      ecommerce: {
+        url: "http://localhost:3000/store/developer-services",
+        swatches: ["#FFFFFF", "#1F2937", "#F59E0B", "#EF4444"],
+        typography: "Plus Jakarta Sans & Space Mono",
+        strategy: "Styles projects as marketplace digital products with buy buttons and price tags, accompanied by a shopping cart widget that tracks orders.",
+        render: () => {
+          return `
+            <div class="bg-slate-50 text-slate-800 min-h-full font-sans flex flex-col">
+              <!-- Ecom Navbar -->
+              <header class="bg-white border-b border-slate-200 py-4 px-6 flex justify-between items-center shadow-xs">
+                <span class="font-extrabold text-base tracking-tight text-slate-900">⚡ HASHMI DEVELOPER SHOP</span>
+                <div class="flex items-center gap-6">
+                  <span class="text-xs text-slate-500 hover:text-slate-800 cursor-pointer font-bold">ALL CONTRACTS</span>
+                  <div class="bg-amber-500 text-slate-950 font-bold text-xs px-3 py-1.5 rounded-full flex items-center gap-2 cursor-pointer transition active:scale-95">
+                    <span>🛒 Cart</span>
+                    <span id="cart-counter-badge" class="bg-slate-950 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-black">0</span>
+                  </div>
+                </div>
+              </header>
+              
+              <!-- Store Hero -->
+              <div class="bg-slate-900 text-white py-10 px-8 text-center space-y-3 shrink-0">
+                <span class="text-xs font-bold text-amber-500 uppercase tracking-widest">Lahore Production Office</span>
+                <h2 class="text-3xl font-black tracking-tight">Purchase Premium Developer Solutions</h2>
+                <p class="text-sm text-slate-400 max-w-xl mx-auto">${portfolioData.bio}</p>
+              </div>
+
+              <!-- Product Grid -->
+              <main class="max-w-6xl mx-auto p-8 grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+                ${portfolioData.projects.map(p => `
+                  <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition flex flex-col">
+                    <div class="bg-slate-100 p-6 flex items-center justify-between border-b border-slate-200">
+                      <span class="text-[10px] font-mono font-bold text-slate-500 uppercase bg-slate-200 px-2 py-0.5 rounded">${p.location}</span>
+                      <span class="text-lg font-black text-slate-900">$${p.price.toLocaleString()}</span>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col justify-between">
+                      <div class="space-y-2">
+                        <h4 class="text-xl font-bold text-slate-900">${p.title}</h4>
+                        <span class="text-[11px] font-bold text-amber-600 block uppercase">${p.tagline}</span>
+                        <p class="text-xs text-slate-600 leading-relaxed">${p.description}</p>
+                      </div>
+                      
+                      <div class="mt-6 border-t border-slate-100 pt-4 space-y-4">
+                        <div class="flex flex-wrap gap-1.5">
+                          ${p.tech.map(t => `<span class="text-[9px] font-mono bg-slate-100 text-slate-600 px-2 py-0.5 rounded">${t}</span>`).join('')}
+                        </div>
+                        <button onclick="addToCart()" class="w-full py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold rounded-lg text-xs uppercase tracking-wider transition active:scale-98">
+                          Purchase Contract
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                `).join('')}
+              </main>
+            </div>
+          `;
+        }
+      },
+      skincare: {
+        url: "http://localhost:3000/asharib-formula/minimalist",
+        swatches: ["#FAF6F0", "#FAF6F0", "#E8D8C8", "#2D251E"],
+        typography: "Cormorant Garamond & Plus Jakarta Sans",
+        strategy: "Uses a luxury, soft-minimalist editorial layout. Swaps projects into clean, scientific-style formulas, leveraging asymmetrical columns and muted neutral tones.",
+        render: () => {
+          return `
+            <div class="bg-[#FAF6F0] text-[#2D251E] min-h-full font-sans p-8 md:p-16 space-y-16 flex flex-col justify-center items-center">
+              
+              <!-- Luxury Brand Header -->
+              <header class="text-center space-y-2 max-w-xl border-b border-[#2D251E]/10 pb-8">
+                <span class="text-[10px] tracking-[0.3em] uppercase font-bold text-amber-900/60 block">ASHARIB HASHMI</span>
+                <h2 class="font-serif text-4xl italic font-light tracking-wide text-slate-900">The Alchemy of Purity</h2>
+                <p class="text-xs italic tracking-wider text-slate-500 font-light mt-2">Lahore, PK &mdash; Premium Software Formulations</p>
+              </header>
+
+              <!-- Philosophy Manifesto Block -->
+              <section class="max-w-2xl text-center space-y-4">
+                <span class="text-[10px] tracking-[0.2em] uppercase font-bold text-amber-900/60 block">// PHILOSOPHY</span>
+                <p class="font-serif italic text-2xl md:text-3xl text-slate-800 leading-normal font-light">
+                  "${portfolioData.manifesto}"
+                </p>
+              </section>
+
+              <!-- Formulas Grid (Projects) -->
+              <section class="w-full max-w-4xl space-y-12">
+                <h3 class="font-serif text-xs uppercase tracking-[0.25em] text-center text-amber-900/70 border-b border-[#2D251E]/10 pb-3">Formulated Digital Assets</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                  ${portfolioData.projects.map(p => `
+                    <div class="space-y-4 flex flex-col justify-between">
+                      <div class="space-y-2">
+                        <div class="flex justify-between items-baseline border-b border-[#2D251E]/20 pb-2">
+                          <h4 class="font-serif text-2xl font-normal text-slate-900 italic">${p.title}</h4>
+                          <span class="text-[9px] font-mono tracking-widest uppercase text-slate-500">${p.location}</span>
+                        </div>
+                        <span class="text-[10px] tracking-wider uppercase font-bold text-amber-800/80 block">${p.tagline}</span>
+                        <p class="text-xs text-slate-600 font-light leading-relaxed">${p.description}</p>
+                      </div>
+                      <div class="flex flex-wrap gap-2 pt-2">
+                        ${p.tech.map(t => `<span class="text-[9px] tracking-wider italic text-[#2D251E]/70 px-2 py-0.5 border border-[#2D251E]/10 rounded-full bg-[#E8D8C8]/10">${t}</span>`).join('')}
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </section>
+
+              <!-- Academic Formulation Footer -->
+              <footer class="w-full max-w-2xl border-t border-[#2D251E]/10 pt-8 text-center space-y-2">
+                <span class="text-[10px] tracking-[0.2em] uppercase font-bold text-amber-900/60">ACADEMIC GENESIS</span>
+                <p class="font-serif text-lg italic text-slate-900">${portfolioData.education.degree}</p>
+                <p class="text-xs text-slate-500 font-light">${portfolioData.education.institution} &bull; ${portfolioData.education.focus}</p>
+              </footer>
+
+            </div>
+          `;
+        }
+      },
+      blog: {
+        url: "http://localhost:3000/blog/dossier",
+        swatches: ["#FDFDFD", "#111111", "#F4F4F0", "#333333"],
+        typography: "Fraunces & Plus Jakarta Sans",
+        strategy: "Uses a clean newspaper-style multi-column layout, mapping the portfolio manifesto as the main editorial feature article and compiling projects as supporting case studies.",
+        render: () => {
+          return `
+            <div class="bg-[#FDFDFD] text-[#111111] min-h-full font-sans p-6 md:p-12 space-y-12">
+              
+              <!-- Journal Header -->
+              <header class="border-b-4 border-[#111111] pb-6 text-center space-y-4">
+                <h2 class="font-serif font-black text-4xl md:text-5xl uppercase tracking-tighter text-slate-950">THE STACK JOURNAL</h2>
+                <div class="flex justify-between items-center text-[10px] font-mono font-bold uppercase border-t border-[#111111] pt-3">
+                  <span>Lahore PK</span>
+                  <span>PUBLISHED IN REAL TIME</span>
+                  <span>June 2026</span>
+                </div>
+              </header>
+
+              <!-- Main Editorial Feature (Manifesto) -->
+              <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b-2 border-slate-200 pb-10">
+                <div class="lg:col-span-8 space-y-4">
+                  <span class="text-[10px] font-mono font-bold bg-[#111111] text-white px-2 py-0.5 uppercase">Featured Manifesto</span>
+                  <h3 class="font-serif text-2xl md:text-3xl font-bold leading-tight text-slate-950">
+                    "Precision is not just a requirement; it's a philosophy."
+                  </h3>
+                  <p class="text-xs text-slate-700 leading-relaxed font-light">
+                    In an age of digital noise, we must build for clarity, performance, and long-term resilience. This manifesto highlights the software construction principles driving modern Web engineering.
+                  </p>
+                </div>
+                <div class="lg:col-span-4 bg-[#F4F4F0] p-6 border-l-4 border-[#111111] flex flex-col justify-between">
+                  <div class="space-y-2">
+                    <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500">Author Bio</span>
+                    <h4 class="font-bold text-sm text-slate-950">${portfolioData.name}</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">${portfolioData.bio}</p>
+                  </div>
+                  <span class="text-[10px] font-mono font-bold mt-4 block text-slate-500">ESTABLISHED IN CENTRAL PUNJAB</span>
+                </div>
+              </section>
+
+              <!-- Secondary Articles Grid (Projects) -->
+              <section class="space-y-6">
+                <h3 class="font-serif text-xs font-black uppercase tracking-widest text-slate-400">Technical Case Studies</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  ${portfolioData.projects.map(p => `
+                    <div class="space-y-3 flex flex-col justify-between">
+                      <div class="space-y-2">
+                        <span class="text-[10px] font-mono font-bold text-slate-400 uppercase">${p.location} &bull; 4 min read</span>
+                        <h4 class="font-serif text-lg font-bold text-slate-900 hover:underline cursor-pointer">${p.title}</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed">${p.description}</p>
+                      </div>
+                      <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100">
+                        ${p.tech.map(t => `<span class="text-[9px] font-mono text-slate-500 bg-slate-100 px-2 py-0.5 rounded">${t}</span>`).join('')}
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </section>
+
+            </div>
+          `;
+        }
+      },
+      recruitment: {
+        url: "http://localhost:3000/ats/candidate/asharib",
+        swatches: ["#F8FAFC", "#1E293B", "#0D9488", "#E2E8F0"],
+        typography: "Plus Jakarta Sans & Space Mono",
+        strategy: "Renders the portfolio as a recruitment ATS software dossier. Displays candidate statistics, active matching scores, and customizable hiring checks.",
+        render: () => {
+          return `
+            <div class="bg-slate-50 text-slate-800 min-h-full font-sans p-6 md:p-8 space-y-6">
+              
+              <!-- Candidate Header Panel -->
+              <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                <div class="space-y-2">
+                  <div class="flex items-center gap-3">
+                    <h2 class="text-2xl font-black text-slate-900">${portfolioData.name}</h2>
+                    <span class="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Verified Candidate</span>
+                  </div>
+                  <p class="text-xs text-slate-500 font-mono">${portfolioData.title} &bull; Lahore, Pakistan</p>
+                </div>
+                <button class="px-5 py-2.5 bg-[#0D9488] hover:bg-[#0B7A70] text-white text-xs font-bold rounded-lg uppercase tracking-wider transition active:scale-95">
+                  Initiate Interview Set
+                </button>
+              </div>
+
+              <!-- Content Split Grid -->
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- Timeline & Experience -->
+                <div class="lg:col-span-8 bg-white border border-slate-200 rounded-xl p-6 space-y-6">
+                  <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Technical Case Work</h3>
+                  
+                  <div class="space-y-6">
+                    ${portfolioData.projects.map(p => `
+                      <div class="flex gap-4 border-b border-slate-100 pb-4 last:border-b-0 last:pb-0">
+                        <div class="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center shrink-0">
+                          <span class="text-lg">💼</span>
+                        </div>
+                        <div class="space-y-1">
+                          <div class="flex justify-between items-center w-full">
+                            <h4 class="font-bold text-slate-900 text-sm">${p.title}</h4>
+                            <span class="text-[10px] bg-slate-100 px-2 py-0.5 rounded font-mono text-slate-500 font-bold">${p.location}</span>
+                          </div>
+                          <span class="text-[10px] text-teal-600 block uppercase font-bold">${p.tagline}</span>
+                          <p class="text-xs text-slate-600 mt-1">${p.description}</p>
+                          <div class="flex flex-wrap gap-1.5 pt-2">
+                            ${p.tech.map(t => `<span class="text-[9px] font-mono bg-slate-50 text-slate-500 px-2 py-0.5 rounded">${t}</span>`).join('')}
+                          </div>
+                        </div>
+                      </div>
+                    `).join('')}
+                  </div>
+                </div>
+
+                <!-- Live Skill Matcher Widget -->
+                <div class="lg:col-span-4 bg-white border border-slate-200 rounded-xl p-6 space-y-4">
+                  <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Requirements Matcher</h3>
+                  
+                  <p class="text-xs text-slate-500">Toggle the required stack items below to recalculate candidate suitability score:</p>
+                  
+                  <div class="space-y-2 border-b border-slate-100 pb-4">
+                    <label class="flex items-center gap-3 text-xs text-slate-700 cursor-pointer">
+                      <input type="checkbox" checked onchange="toggleSkillMatch(this)" class="rounded border-slate-300 text-teal-600 focus:ring-teal-500" />
+                      <span>TypeScript (ES6+)</span>
+                    </label>
+                    <label class="flex items-center gap-3 text-xs text-slate-700 cursor-pointer">
+                      <input type="checkbox" checked onchange="toggleSkillMatch(this)" class="rounded border-slate-300 text-teal-600 focus:ring-teal-500" />
+                      <span>Next.js App Router</span>
+                    </label>
+                    <label class="flex items-center gap-3 text-xs text-slate-700 cursor-pointer">
+                      <input type="checkbox" checked onchange="toggleSkillMatch(this)" class="rounded border-slate-300 text-teal-600 focus:ring-teal-500" />
+                      <span>MongoDB / Convex</span>
+                    </label>
+                    <label class="flex items-center gap-3 text-xs text-slate-700 cursor-pointer">
+                      <input type="checkbox" onchange="toggleSkillMatch(this)" class="rounded border-slate-300 text-teal-600 focus:ring-teal-500" />
+                      <span>Rust WebAssembly (Bonus)</span>
+                    </label>
+                  </div>
+
+                  <div class="space-y-1">
+                    <div class="flex justify-between text-xs font-mono">
+                      <span>Matching index:</span>
+                      <span class="font-bold text-teal-600" id="ats-match-score">90%</span>
+                    </div>
+                    <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                      <div class="bg-teal-500 h-full transition-all duration-300" id="ats-match-bar" style="width: 90%"></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          `;
+        }
+      },
+      realestate: {
+        url: "http://localhost:3000/listings/dubai-lahore",
+        swatches: ["#FDFBF7", "#064E3B", "#D97706", "#F5F5F5"],
+        typography: "Playfair Display & Space Mono",
+        strategy: "Converts the portfolio layout to look like a premium real estate agency catalog, where projects are formatted as physical houses with listing prices, area dimensions, and bedroom/bathroom attributes.",
+        render: () => {
+          return `
+            <div class="bg-[#FDFBF7] text-slate-800 min-h-full font-serif p-6 md:p-12 space-y-10">
+              
+              <!-- Agency Title -->
+              <header class="border-b border-[#064E3B]/20 pb-6 flex justify-between items-end">
+                <div>
+                  <h2 class="text-3xl font-black text-[#064E3B] tracking-tight uppercase">HASHMI DIGITAL ESTATES</h2>
+                  <p class="text-xs text-slate-500 font-sans tracking-wide mt-1">Lahore Office &bull; Premium Virtual Assets</p>
+                </div>
+                <div class="hidden sm:block text-right">
+                  <span class="text-xs font-sans text-amber-700 block uppercase font-bold">Dubai Registry</span>
+                  <span class="text-xs font-sans text-slate-400">Lahore Registry</span>
+                </div>
+              </header>
+
+              <!-- Listing Search Filters -->
+              <div class="bg-white border border-slate-200 rounded-xl p-4 flex flex-wrap gap-4 items-center justify-between font-sans">
+                <div class="flex gap-2">
+                  <button onclick="filterProperties('all')" class="prop-filter-btn px-3 py-1.5 rounded-lg text-xs bg-[#064E3B] text-white font-bold transition">All Estates</button>
+                  <button onclick="filterProperties('Dubai')" class="prop-filter-btn px-3 py-1.5 rounded-lg text-xs bg-slate-100 text-slate-600 font-bold transition">Dubai</button>
+                  <button onclick="filterProperties('Global')" class="prop-filter-btn px-3 py-1.5 rounded-lg text-xs bg-slate-100 text-slate-600 font-bold transition">Global</button>
+                </div>
+                <span class="text-xs text-slate-400">Total Listings: 4 Estates</span>
+              </div>
+
+              <!-- Property Grid -->
+              <main class="grid grid-cols-1 md:grid-cols-2 gap-8" id="properties-grid">
+                ${portfolioData.projects.map(p => `
+                  <div data-location="${p.location}" class="property-card-element bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm flex flex-col justify-between">
+                    <div>
+                      <div class="bg-slate-50 p-6 flex justify-between items-center border-b border-slate-100">
+                        <span class="text-xs font-bold text-amber-700 uppercase tracking-widest font-sans">${p.location}</span>
+                        <span class="text-xl font-bold text-[#064E3B] font-sans">$${p.price.toLocaleString()}</span>
+                      </div>
+                      
+                      <div class="p-6 space-y-3 font-sans">
+                        <h4 class="text-xl font-bold text-slate-900 font-serif">${p.title}</h4>
+                        <span class="text-xs font-bold text-emerald-700 uppercase block">${p.tagline}</span>
+                        <p class="text-xs text-slate-600 leading-relaxed font-light">${p.description}</p>
+                      </div>
+                    </div>
+
+                    <!-- Footing specs -->
+                    <div class="p-6 bg-slate-50/50 border-t border-slate-100 flex justify-between text-xs text-slate-500 font-sans">
+                      <span>🛏️ ${p.beds} Repos</span>
+                      <span>🛁 ${p.baths} Integrations</span>
+                      <span>📐 ${p.area}</span>
+                    </div>
+                  </div>
+                `).join('')}
+              </main>
+
+            </div>
+          `;
+        }
+      },
+      lms: {
+        url: "http://localhost:3000/lms/classroom/asharib",
+        swatches: ["#F1F5F9", "#5B21B6", "#059669", "#E2E8F0"],
+        typography: "Plus Jakarta Sans & Space Mono",
+        strategy: "Transforms the layout into a classroom syllabus dashboard. Swaps projects into learning modules, accompanied by GPA status indicators and module progress tracking bars.",
+        render: () => {
+          return `
+            <div class="bg-[#F1F5F9] text-slate-800 min-h-full font-sans p-6 md:p-8 space-y-6">
+              
+              <!-- LMS Welcome Banner -->
+              <div class="bg-[#5B21B6] text-white rounded-2xl p-6 shadow-md flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shrink-0">
+                <div class="space-y-1">
+                  <span class="text-[10px] text-purple-200 uppercase tracking-widest font-mono">Academic Portal</span>
+                  <h2 class="text-2xl font-black">${portfolioData.education.degree} Syllabus</h2>
+                  <p class="text-xs text-purple-200">${portfolioData.education.institution} &bull; MERN</p>
+                </div>
+                <div class="bg-white/10 px-4 py-2 rounded-xl text-center">
+                  <span class="text-[10px] text-purple-200 block uppercase font-bold">Current GPA</span>
+                  <span class="text-xl font-black">3.95 / 4.00</span>
+                </div>
+              </div>
+
+              <!-- Course Syllabus Grid -->
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- Courses list -->
+                <div class="lg:col-span-8 space-y-6">
+                  <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Classroom Modules</h3>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    ${portfolioData.projects.map((p, idx) => `
+                      <div class="bg-white border border-slate-200 rounded-xl p-5 flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                          <div class="flex justify-between items-center">
+                            <span class="text-[10px] font-mono font-bold text-slate-400">Module [0${idx+1}]</span>
+                            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">Active</span>
+                          </div>
+                          <h4 class="font-bold text-slate-900 text-base">${p.title} Studies</h4>
+                          <p class="text-xs text-slate-500 leading-relaxed font-light">${p.description}</p>
+                        </div>
+                        
+                        <div class="space-y-2">
+                          <div class="flex justify-between text-[10px] font-mono text-slate-400">
+                            <span>Syllabus Covered:</span>
+                            <span>${85 - idx * 10}%</span>
+                          </div>
+                          <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                            <div class="bg-purple-600 h-full" style="width: ${85 - idx * 10}%"></div>
+                          </div>
+                        </div>
+                      </div>
+                    `).join('')}
+                  </div>
+                </div>
+
+                <!-- Academic Progress tracker -->
+                <div class="lg:col-span-4 bg-white border border-slate-200 rounded-xl p-5 space-y-4">
+                  <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Core Focus Checklist</h3>
+                  <ul class="space-y-2.5 text-xs text-slate-600">
+                    <li class="flex items-center gap-2">
+                      <span class="text-emerald-500 font-bold">✓</span>
+                      <span>Advanced MERN Stack Architectures</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <span class="text-emerald-500 font-bold">✓</span>
+                      <span>Serverless Functions & Clerk Auth</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <span class="text-emerald-500 font-bold">✓</span>
+                      <span>Dynamic Convex WebSocket Pipeline</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                      <span class="text-purple-400 font-bold">◷</span>
+                      <span>API Security audits & deployment (Ongoing)</span>
+                    </li>
+                  </ul>
+                </div>
+
+              </div>
+
+            </div>
+          `;
+        }
+      },
+      content: {
+        url: "http://localhost:3000/wiki/asharib-hashmi",
+        swatches: ["#F5F5F5", "#111111", "#991B1B", "#E5E7EB"],
+        typography: "Fraunces & Plus Jakarta Sans",
+        strategy: "Builds a traditional, content-dense information wiki. Organizes technical data with clear index items, side panels, and simulated banner ads for client hiring.",
+        render: () => {
+          return `
+            <div class="bg-[#F5F5F5] text-slate-800 min-h-full font-sans p-6 md:p-8 space-y-6">
+              
+              <!-- Content header -->
+              <div class="border-b-2 border-red-800 pb-3 flex justify-between items-center shrink-0">
+                <span class="font-serif text-2xl font-black tracking-tight text-red-800">STAC-PEDIA ARCHIVE</span>
+                <span class="text-[10px] text-slate-400 font-mono uppercase">Database Version 2.06</span>
+              </div>
+
+              <!-- Main Content Area -->
+              <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- Primary content column -->
+                <div class="lg:col-span-8 bg-white border border-slate-200 rounded-lg p-6 space-y-6">
+                  <div class="space-y-1">
+                    <span class="text-[10px] text-red-600 font-bold uppercase tracking-wider">Candidate Profile</span>
+                    <h2 class="text-3xl font-serif font-black text-slate-900">${portfolioData.name}</h2>
+                    <p class="text-xs text-slate-400 font-light mt-1 border-b border-slate-100 pb-3">${portfolioData.bio}</p>
+                  </div>
+
+                  <!-- Table of Contents mockup -->
+                  <div class="bg-slate-50 border border-slate-200 p-4 rounded-lg space-y-2">
+                    <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">Contents Directory</span>
+                    <ul class="text-xs text-red-700 space-y-1 list-disc list-inside">
+                      <li><a href="#about" class="hover:underline">1. General Academic Genesis</a></li>
+                      <li><a href="#projects" class="hover:underline">2. Completed Case Implementations</a></li>
+                      <li><a href="#manifesto" class="hover:underline">3. Core Architectural Manifesto</a></li>
+                    </ul>
+                  </div>
+
+                  <div id="projects" class="space-y-4">
+                    <h3 class="font-serif text-lg font-bold text-slate-900 border-b border-slate-200 pb-2">2. Completed Case Implementations</h3>
+                    <div class="space-y-4">
+                      ${portfolioData.projects.map(p => `
+                        <div class="space-y-1">
+                          <h4 class="text-sm font-bold text-slate-900">${p.title} &bull; <span class="text-red-700 italic">${p.location}</span></h4>
+                          <p class="text-xs text-slate-600 leading-relaxed font-light">${p.description}</p>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sidebar Ad and Profile Summary -->
+                <div class="lg:col-span-4 space-y-6">
+                  
+                  <!-- Profile info box -->
+                  <div class="bg-white border border-slate-200 rounded-lg p-4 space-y-3">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-800 border-b border-slate-100 pb-2">Quick Stats</h3>
+                    <table class="w-full text-xs">
+                      <tbody>
+                        <tr class="border-b border-slate-50"><td class="py-2 text-slate-400">Position</td><td class="py-2 font-semibold">Developer</td></tr>
+                        <tr class="border-b border-slate-50"><td class="py-2 text-slate-400">Location</td><td class="py-2 font-semibold">Lahore, PK</td></tr>
+                        <tr class="border-b border-slate-50"><td class="py-2 text-slate-400">Degree</td><td class="py-2 font-semibold">BS SE</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <!-- Mockup Banner Ad -->
+                  <div class="bg-red-800 text-white p-6 rounded-lg text-center space-y-4 shadow-sm border border-red-950">
+                    <span class="text-[10px] tracking-widest font-mono text-red-200 block">CAREER ADVERTISEMENT</span>
+                    <h4 class="text-lg font-serif font-bold italic leading-tight">Hire Top Engineering Talent Today</h4>
+                    <p class="text-xs text-red-200">Accelerate your product roadmap with precise backend APIs.</p>
+                    <button class="w-full py-2 bg-white text-red-800 font-extrabold rounded text-xs uppercase tracking-wider">
+                      Get Portfolio Quote
+                    </button>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+          `;
+        }
+      },
+      landing: {
+        url: "http://localhost:3000/landing/saas-core",
+        swatches: ["#4F46E5", "#7C3AED", "#84CC16", "#FFFFFF"],
+        typography: "Plus Jakarta Sans",
+        strategy: "Uses a modern, high-converting SaaS landing page layout. Features a giant hero screen, client checkmarks, pricing grids, and a direct form conversion panel.",
+        render: () => {
+          return `
+            <div class="bg-slate-950 text-white min-h-full font-sans flex flex-col justify-between">
+              
+              <!-- Landing Hero Section -->
+              <section class="py-20 px-8 text-center space-y-6 max-w-4xl mx-auto flex flex-col items-center">
+                <span class="text-xs font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded-full uppercase tracking-wider">
+                  MERN Stack & Cloud Deployed
+                </span>
+                
+                <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-none bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                  Build for Clarity. Deployed with Precision.
+                </h2>
+                
+                <p class="text-base text-slate-400 max-w-xl mx-auto leading-relaxed">
+                  ${portfolioData.bio} Deployed on serverless cloud backends for responsive uptime.
+                </p>
+                
+                <div class="flex flex-wrap gap-4 justify-center">
+                  <a href="#pricing" class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg uppercase tracking-wider transition active:scale-95">
+                    Start Deploys Free
+                  </a>
+                  <a href="#manifesto" class="px-6 py-3 bg-slate-900 border border-slate-800 hover:bg-slate-800 text-slate-300 text-xs font-bold rounded-lg uppercase tracking-wider transition active:scale-95">
+                    Read Manifesto
+                  </a>
+                </div>
+              </section>
+
+              <!-- Value Prop Checkmarks -->
+              <section class="max-w-5xl mx-auto px-8 py-10 border-t border-slate-900 w-full grid grid-cols-1 md:grid-cols-3 gap-6 text-center md:text-left">
+                <div class="space-y-2">
+                  <h4 class="text-sm font-bold text-white flex items-center justify-center md:justify-start gap-2">
+                    <span class="text-lime-400">✓</span> 99.96% Cloud Uptime
+                  </h4>
+                  <p class="text-xs text-slate-500">Persistent websocket query integrations hosted on Convex Cloud.</p>
+                </div>
+                <div class="space-y-2">
+                  <h4 class="text-sm font-bold text-white flex items-center justify-center md:justify-start gap-2">
+                    <span class="text-lime-400">✓</span> MERN Core Pipelines
+                  </h4>
+                  <p class="text-xs text-slate-500">TypeScript, Next.js, Node and MongoDB backend architecture.</p>
+                </div>
+                <div class="space-y-2">
+                  <h4 class="text-sm font-bold text-white flex items-center justify-center md:justify-start gap-2">
+                    <span class="text-lime-400">✓</span> API Security focus
+                  </h4>
+                  <p class="text-xs text-slate-500">Complete authentication flow using NextAuth or Clerk providers.</p>
+                </div>
+              </section>
+
+              <!-- Pricing Cards Grid -->
+              <section id="pricing" class="max-w-5xl mx-auto px-8 py-16 w-full space-y-10 border-t border-slate-900">
+                <div class="text-center space-y-2">
+                  <h3 class="text-xs font-bold uppercase tracking-widest text-indigo-400">Pricing Packages</h3>
+                  <p class="text-2xl font-black text-white">Choose Your Development tier</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+                  <!-- Free -->
+                  <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between">
+                    <div class="space-y-3">
+                      <span class="text-[10px] text-slate-500 uppercase tracking-widest font-mono">Demos Package</span>
+                      <h4 class="text-xl font-bold">Starter Sandbox</h4>
+                      <p class="text-xs text-slate-500">Review responsive portfolio page layout mockups.</p>
+                      <span class="text-2xl font-black text-white block mt-4">$0 <span class="text-xs text-slate-500 font-normal">/ Project</span></span>
+                    </div>
+                    <button class="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-lg text-xs mt-6 transition">
+                      Launch Demo Portal
+                    </button>
+                  </div>
+                  <!-- Hillcrest -->
+                  <div class="bg-slate-900 border-2 border-indigo-500 rounded-xl p-6 flex flex-col justify-between relative shadow-lg">
+                    <span class="absolute -top-3 right-6 bg-indigo-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase">Most Popular</span>
+                    <div class="space-y-3">
+                      <span class="text-[10px] text-indigo-400 uppercase tracking-widest font-mono">Real Estate</span>
+                      <h4 class="text-xl font-bold">Hillcrest Tier</h4>
+                      <p class="text-xs text-slate-400">Next.js & React Native listing platform with custom dashboard.</p>
+                      <span class="text-2xl font-black text-white block mt-4">$4,500 <span class="text-xs text-slate-500 font-normal">/ Project</span></span>
+                    </div>
+                    <button class="w-full py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg text-xs mt-6 transition">
+                      Order Hillcrest Tier
+                    </button>
+                  </div>
+                  <!-- Todin -->
+                  <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 flex flex-col justify-between">
+                    <div class="space-y-3">
+                      <span class="text-[10px] text-slate-500 uppercase tracking-widest font-mono">E-Commerce</span>
+                      <h4 class="text-xl font-bold">Todin Enterprise</h4>
+                      <p class="text-xs text-slate-500">Partner directory matching system with live wallet flows.</p>
+                      <span class="text-2xl font-black text-white block mt-4">$6,200 <span class="text-xs text-slate-500 font-normal">/ Project</span></span>
+                    </div>
+                    <button class="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-lg text-xs mt-6 transition">
+                      Order Todin Tier
+                    </button>
+                  </div>
+                </div>
+              </section>
+
+            </div>
+          `;
+        }
+      }
+    };
+
+    // Controller function to swap theme and render content
+    function changeNiche(nicheKey) {
+      const config = nicheConfigs[nicheKey];
+      if (!config) return;
+
+      // Update active nav button state
+      const buttons = document.querySelectorAll('#niche-selector-group button');
+      buttons.forEach(btn => {
+        btn.classList.remove('border-indigo-500', 'text-white');
+        btn.classList.add('border-transparent', 'text-slate-400');
+        // Retrieve badge span
+        const badge = btn.querySelector('span:last-child');
+        if (badge) {
+          badge.className = "text-[10px] bg-slate-800 text-slate-400 px-2 py-0.5 rounded font-mono";
+        }
+      });
+      
+      const activeBtn = document.getElementById(`btn-${nicheKey}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('border-transparent', 'text-slate-400');
+        activeBtn.classList.add('border-indigo-500', 'text-white');
+        const activeBadge = activeBtn.querySelector('span:last-child');
+        if (activeBadge) {
+          activeBadge.className = "text-[10px] bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded font-mono";
+        }
+      }
+
+      // Update URL bar
+      document.getElementById('browser-url-bar').textContent = config.url;
+
+      // Render layout content inside preview canvas
+      const canvas = document.getElementById('preview-canvas');
+      canvas.innerHTML = config.render();
+
+      // Update design system specifications in sidebar
+      document.getElementById('design-typography-spec').textContent = config.typography;
+      document.getElementById('design-layout-strategy').textContent = config.strategy;
+
+      // Update palette swatches
+      const swatchesContainer = document.getElementById('design-palette-colors');
+      swatchesContainer.innerHTML = '';
+      config.swatches.forEach(color => {
+        const div = document.createElement('div');
+        div.className = "w-6 h-6 rounded border border-slate-800";
+        div.style.backgroundColor = color;
+        div.title = color;
+        swatchesContainer.appendChild(div);
+      });
+    }
+
+    // Interactive button helper: E-Commerce Add to Cart
+    let cartCount = 0;
+    function addToCart() {
+      cartCount++;
+      const badge = document.getElementById('cart-counter-badge');
+      if (badge) {
+        badge.textContent = cartCount;
+        // Simple micro-animation scale pulse
+        badge.classList.add('scale-125');
+        setTimeout(() => badge.classList.remove('scale-125'), 150);
+      }
+    }
+
+    // Interactive helper: Recruitment Match Calculator
+    function toggleSkillMatch(checkbox) {
+      const matchScoreEl = document.getElementById('ats-match-score');
+      const matchBarEl = document.getElementById('ats-match-bar');
+      
+      // Select all checkboxes
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      let checkedCount = 0;
+      checkboxes.forEach(cb => { if (cb.checked) checkedCount++; });
+
+      const score = Math.round((checkedCount / checkboxes.length) * 100);
+      
+      if (matchScoreEl && matchBarEl) {
+        matchScoreEl.textContent = score + '%';
+        matchBarEl.style.width = score + '%';
+      }
+    }
+
+    // Interactive helper: Real Estate listing filter
+    function filterProperties(location) {
+      // Toggle active states on listing filter buttons
+      const filterBtns = document.querySelectorAll('.prop-filter-btn');
+      filterBtns.forEach(btn => {
+        btn.classList.remove('bg-[#064E3B]', 'text-white');
+        btn.classList.add('bg-slate-100', 'text-slate-600');
+      });
+
+      // Find trigger button and highlight it
+      const eventTarget = window.event?.target;
+      if (eventTarget) {
+        eventTarget.classList.remove('bg-slate-100', 'text-slate-600');
+        eventTarget.classList.add('bg-[#064E3B]', 'text-white');
+      }
+
+      // Hide or show property cards
+      const cards = document.querySelectorAll('.property-card-element');
+      cards.forEach(card => {
+        const cardLoc = card.getAttribute('data-location');
+        if (location === 'all' || cardLoc.includes(location)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Initialize Page
+    changeNiche('dashboard');
+  </script>
+</body>
+</html>
