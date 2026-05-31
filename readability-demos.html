@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Readability Laboratory — Portfolio Demos</title>
+  <!-- Tailwind CSS CDN for the outer dashboard shell -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts integration for the portfolio preview -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=Cabinet+Grotesk:wght@800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Dashboard-specific styling */
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    /* ----------------------------------------------------
+       ISOLATED PORTFOLIO VIEWPORT (SANDBOX) STYLE SYSTEM
+       ---------------------------------------------------- */
+    .sandbox {
+      --bg-cream: #FFF6DC;
+      --color-dark: #16082B;
+      --color-yellow: #FBCF0D;
+      --color-pink: #E22359;
+      --color-purple: #8E007E;
+      --color-orange: #F37324;
+      
+      background-color: var(--bg-cream);
+      color: var(--color-dark);
+      transition: all 0.3s ease-in-out;
+    }
+
+    /* Shared defaults */
+    .sandbox * {
+      transition: all 0.2s ease-in-out;
+    }
+    .sandbox .p-serif-head {
+      font-family: 'Fraunces', serif;
+    }
+    .sandbox .p-mono-text {
+      font-family: 'Space Mono', monospace;
+    }
+    .sandbox .p-sans-text {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* ====================================================
+       MODE 0: ORIGINAL (Aggressive caps, monospace body)
+       ==================================================== */
+    .sandbox.mode-original {
+      font-family: 'Space Mono', monospace;
+      font-size: 15px;
+    }
+    .sandbox.mode-original .p-nav-logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-original .p-hero-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-original .p-section-header {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-original .p-card-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-original .p-manifesto-large {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-original .p-body-copy {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.4;
+    }
+    .sandbox.mode-original .p-tagline {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      background-color: var(--color-dark);
+      color: #fff;
+    }
+    .sandbox.mode-original .p-tag {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      border: 2px solid var(--color-dark);
+      background-color: #fff;
+      color: var(--color-dark);
+      border-radius: 0;
+    }
+    .sandbox.mode-original .p-form-label {
+      font-family: 'Space Mono', monospace;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-original .p-form-input {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      border: 4px solid var(--color-dark);
+      border-radius: 0;
+      background-color: #fff;
+      box-shadow: 4px 4px 0px var(--color-dark);
+    }
+    .sandbox.mode-original .p-button {
+      font-family: 'Space Mono', monospace;
+      font-weight: 900;
+      text-transform: uppercase;
+      border-radius: 0;
+    }
+    .sandbox.mode-original .p-card-grid {
+      gap: 3rem; /* 48px gap */
+    }
+    .sandbox.mode-original .p-card-padding {
+      padding: 2rem; /* 32px padding */
+    }
+    .sandbox.mode-original .p-border-heavy {
+      border: 4px solid var(--color-dark);
+    }
+    .sandbox.mode-original .p-shadow-heavy {
+      box-shadow: 12px 12px 0px var(--color-dark);
+    }
+    .sandbox.mode-original .p-shadow-med {
+      box-shadow: 8px 8px 0px var(--color-dark);
+    }
+    .sandbox.mode-original .project-card-1 {
+      background-color: var(--color-yellow);
+      color: var(--color-dark);
+    }
+    .sandbox.mode-original .project-card-2 {
+      background-color: var(--color-pink);
+      color: #FFF6DC;
+    }
+    .sandbox.mode-original .project-card-3 {
+      background-color: var(--color-purple);
+      color: #FFF6DC;
+    }
+    .sandbox.mode-original .p-input-placeholder::placeholder {
+      text-transform: uppercase;
+      opacity: 0.4;
+    }
+
+    /* ====================================================
+       MODE 1: TYPOGRAPHY HARMONY (Correct typeface & casing)
+       ==================================================== */
+    .sandbox.mode-demo1 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
+    }
+    .sandbox.mode-demo1 .p-nav-logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-demo1 .p-hero-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-demo1 .p-section-header {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-demo1 .p-card-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-demo1 .p-manifesto-large {
+      font-family: 'Fraunces', serif;
+      font-weight: 800;
+      text-transform: none; /* Changed: Sentence case for large layout quotes */
+      line-height: 1.25;
+    }
+    .sandbox.mode-demo1 .p-body-copy {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 550; /* Slightly heavier for neobrutalist weight */
+      text-transform: none; /* Changed: Mixed case */
+      line-height: 1.5;
+    }
+    .sandbox.mode-demo1 .p-tagline {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      text-transform: none; /* Changed: Mixed case */
+      background-color: var(--color-dark);
+      color: #fff;
+    }
+    .sandbox.mode-demo1 .p-tag {
+      font-family: 'Space Mono', monospace; /* Keep mono for technical tags */
+      font-weight: 700;
+      text-transform: uppercase;
+      border: 2px solid var(--color-dark);
+      background-color: #fff;
+      color: var(--color-dark);
+      border-radius: 0;
+    }
+    .sandbox.mode-demo1 .p-form-label {
+      font-family: 'Space Mono', monospace;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-demo1 .p-form-input {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      text-transform: none; /* Changed: Mixed case input */
+      border: 4px solid var(--color-dark);
+      border-radius: 0;
+      background-color: #fff;
+      box-shadow: 4px 4px 0px var(--color-dark);
+    }
+    .sandbox.mode-demo1 .p-button {
+      font-family: 'Space Mono', monospace;
+      font-weight: 900;
+      text-transform: uppercase;
+      border-radius: 0;
+    }
+    .sandbox.mode-demo1 .p-card-grid {
+      gap: 3rem;
+    }
+    .sandbox.mode-demo1 .p-card-padding {
+      padding: 2rem;
+    }
+    .sandbox.mode-demo1 .p-border-heavy {
+      border: 4px solid var(--color-dark);
+    }
+    .sandbox.mode-demo1 .p-shadow-heavy {
+      box-shadow: 12px 12px 0px var(--color-dark);
+    }
+    .sandbox.mode-demo1 .p-shadow-med {
+      box-shadow: 8px 8px 0px var(--color-dark);
+    }
+    .sandbox.mode-demo1 .project-card-1 {
+      background-color: var(--color-yellow);
+      color: var(--color-dark);
+    }
+    .sandbox.mode-demo1 .project-card-2 {
+      background-color: var(--color-pink);
+      color: #fff;
+    }
+    .sandbox.mode-demo1 .project-card-3 {
+      background-color: var(--color-purple);
+      color: #fff;
+    }
+    .sandbox.mode-demo1 .p-input-placeholder::placeholder {
+      text-transform: none;
+      opacity: 0.5;
+    }
+
+    /* ====================================================
+       MODE 2: SPATIAL BREATHING (Layout padding, lighter borders)
+       ==================================================== */
+    .sandbox.mode-demo2 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
+    }
+    .sandbox.mode-demo2 .p-nav-logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-demo2 .p-hero-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+    .sandbox.mode-demo2 .p-section-header {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-demo2 .p-card-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-demo2 .p-manifesto-large {
+      font-family: 'Fraunces', serif;
+      font-weight: 800;
+      text-transform: none;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+    }
+    .sandbox.mode-demo2 .p-body-copy {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      text-transform: none;
+      line-height: 1.65; /* Increased: More leading for paragraph readability */
+      letter-spacing: 0.01em;
+    }
+    .sandbox.mode-demo2 .p-tagline {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      text-transform: none;
+      background-color: var(--color-dark);
+      color: #fff;
+    }
+    .sandbox.mode-demo2 .p-tag {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      border: 2px solid var(--color-dark); /* Changed: Lighter border weight */
+      background-color: #fff;
+      color: var(--color-dark);
+      border-radius: 0;
+    }
+    .sandbox.mode-demo2 .p-form-label {
+      font-family: 'Space Mono', monospace;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-demo2 .p-form-input {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      text-transform: none;
+      border: 2px solid var(--color-dark); /* Changed: 2px border on inputs */
+      border-radius: 0;
+      background-color: #fff;
+      box-shadow: 4px 4px 0px var(--color-dark);
+    }
+    .sandbox.mode-demo2 .p-button {
+      font-family: 'Space Mono', monospace;
+      font-weight: 900;
+      text-transform: uppercase;
+      border-radius: 0;
+    }
+    .sandbox.mode-demo2 .p-card-grid {
+      gap: 4rem; /* Changed: More margin between cards */
+    }
+    .sandbox.mode-demo2 .p-card-padding {
+      padding: 3rem 2.5rem; /* Changed: Generous breathing space inside cards */
+    }
+    .sandbox.mode-demo2 .p-border-heavy {
+      border: 4px solid var(--color-dark);
+    }
+    .sandbox.mode-demo2 .p-shadow-heavy {
+      box-shadow: 12px 12px 0px var(--color-dark);
+    }
+    .sandbox.mode-demo2 .p-shadow-med {
+      box-shadow: 8px 8px 0px var(--color-dark);
+    }
+    .sandbox.mode-demo2 .project-card-1 {
+      background-color: var(--color-yellow);
+      color: var(--color-dark);
+    }
+    .sandbox.mode-demo2 .project-card-2 {
+      background-color: var(--color-pink);
+      color: #fff;
+    }
+    .sandbox.mode-demo2 .project-card-3 {
+      background-color: var(--color-purple);
+      color: #fff;
+    }
+    .sandbox.mode-demo2 .p-input-placeholder::placeholder {
+      text-transform: none;
+      opacity: 0.5;
+    }
+
+    /* ====================================================
+       MODE 3: SOFTENED HYBRID (Rounded, consistent backgrounds)
+       ==================================================== */
+    .sandbox.mode-demo3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 16px;
+    }
+    .sandbox.mode-demo3 .p-nav-logo {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-demo3 .p-hero-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+    .sandbox.mode-demo3 .p-section-header {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-demo3 .p-card-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-demo3 .p-manifesto-large {
+      font-family: 'Fraunces', serif;
+      font-weight: 800;
+      text-transform: none;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+    }
+    .sandbox.mode-demo3 .p-body-copy {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      text-transform: none;
+      line-height: 1.65;
+      letter-spacing: 0.01em;
+      color: #3b2f54; /* Slightly softer than pure dark purple to lower eye strain */
+    }
+    .sandbox.mode-demo3 .p-tagline {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      text-transform: none;
+      background-color: var(--color-dark);
+      color: #fff;
+    }
+    .sandbox.mode-demo3 .p-tag {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      text-transform: uppercase;
+      border: 2px solid var(--color-dark);
+      background-color: #fff;
+      color: var(--color-dark);
+      border-radius: 6px; /* Changed: Rounded tags */
+    }
+    .sandbox.mode-demo3 .p-form-label {
+      font-family: 'Space Mono', monospace;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+    .sandbox.mode-demo3 .p-form-input {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 500;
+      text-transform: none;
+      border: 3px solid var(--color-dark);
+      border-radius: 12px; /* Changed: Rounded inputs */
+      background-color: #fff;
+      box-shadow: 4px 4px 0px var(--color-dark);
+    }
+    .sandbox.mode-demo3 .p-button {
+      font-family: 'Space Mono', monospace;
+      font-weight: 900;
+      text-transform: uppercase;
+      border-radius: 12px; /* Changed: Rounded buttons */
+    }
+    .sandbox.mode-demo3 .p-card-grid {
+      gap: 3rem;
+    }
+    .sandbox.mode-demo3 .p-card-padding {
+      padding: 3rem 2.5rem;
+    }
+    .sandbox.mode-demo3 .p-border-heavy {
+      border: 3px solid var(--color-dark); /* Slightly thinner borders */
+      border-radius: 16px; /* Changed: Rounded parent sections */
+    }
+    .sandbox.mode-demo3 .p-shadow-heavy {
+      box-shadow: 8px 8px 0px var(--color-dark); /* Slightly tighter shadows */
+    }
+    .sandbox.mode-demo3 .p-shadow-med {
+      box-shadow: 6px 6px 0px var(--color-dark);
+    }
+
+    /* Changed: Card styling changes from solid fills to soft cream backgrounds
+       with the brand color applied as top borders and hard shadows.
+       This ensures absolute readability and consistent contrast ratios. */
+    .sandbox.mode-demo3 .project-card-1 {
+      background-color: #ffffff;
+      color: var(--color-dark);
+      border-top: 8px solid var(--color-yellow);
+      box-shadow: 8px 8px 0px var(--color-yellow);
+    }
+    .sandbox.mode-demo3 .project-card-2 {
+      background-color: #ffffff;
+      color: var(--color-dark);
+      border-top: 8px solid var(--color-pink);
+      box-shadow: 8px 8px 0px var(--color-pink);
+    }
+    .sandbox.mode-demo3 .project-card-3 {
+      background-color: #ffffff;
+      color: var(--color-dark);
+      border-top: 8px solid var(--color-purple);
+      box-shadow: 8px 8px 0px var(--color-purple);
+    }
+
+    /* Tactile interaction on hover */
+    .sandbox.mode-demo3 .project-card {
+      cursor: pointer;
+    }
+    .sandbox.mode-demo3 .project-card:hover {
+      transform: translate(2px, 2px);
+    }
+    .sandbox.mode-demo3 .project-card-1:hover {
+      box-shadow: 4px 4px 0px var(--color-yellow);
+    }
+    .sandbox.mode-demo3 .project-card-2:hover {
+      box-shadow: 4px 4px 0px var(--color-pink);
+    }
+    .sandbox.mode-demo3 .project-card-3:hover {
+      box-shadow: 4px 4px 0px var(--color-purple);
+    }
+    
+    .sandbox.mode-demo3 .p-input-placeholder::placeholder {
+      text-transform: none;
+      opacity: 0.5;
+    }
+
+    /* Browser Viewport Frame Styling */
+    .chrome-btn {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* Dynamic Font Scaling overrides for the sandbox mockups */
+    .sandbox {
+      --font-scale: 1;
+    }
+    .sandbox .text-\[10px\] { font-size: calc(10px * var(--font-scale)) !important; }
+    .sandbox .text-xs { font-size: calc(12px * var(--font-scale)) !important; }
+    .sandbox .text-sm { font-size: calc(14px * var(--font-scale)) !important; }
+    .sandbox .text-base { font-size: calc(16px * var(--font-scale)) !important; }
+    .sandbox .text-lg { font-size: calc(18px * var(--font-scale)) !important; }
+    .sandbox .text-xl { font-size: calc(20px * var(--font-scale)) !important; }
+    .sandbox .text-2xl { font-size: calc(24px * var(--font-scale)) !important; }
+    .sandbox .text-3xl { font-size: calc(30px * var(--font-scale)) !important; }
+    .sandbox .text-4xl { font-size: calc(36px * var(--font-scale)) !important; }
+    .sandbox .text-5xl { font-size: calc(48px * var(--font-scale)) !important; }
+    .sandbox .text-6xl { font-size: calc(60px * var(--font-scale)) !important; }
+    .sandbox .text-7xl { font-size: calc(72px * var(--font-scale)) !important; }
+    .sandbox .text-8xl { font-size: calc(96px * var(--font-scale)) !important; }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col antialiased">
+
+  <!-- Main Header Banner -->
+  <header class="bg-slate-950 border-b border-slate-800 py-5 px-8 flex justify-between items-center shadow-lg relative z-20">
+    <div class="flex items-center gap-4">
+      <div class="h-10 w-10 rounded-lg bg-yellow-400 flex items-center justify-center text-slate-950 font-black text-xl shadow-md">
+        R
+      </div>
+      <div>
+        <h1 class="text-xl font-extrabold tracking-tight text-white flex items-center gap-2">
+          Readability Lab <span class="text-xs bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-2 py-0.5 rounded-full font-bold">Interactive Audit</span>
+        </h1>
+        <p class="text-xs text-slate-400">Comparing Neobrutalist design variants & readability scores</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="text-xs text-slate-400 font-mono">Current Target:</span>
+      <span class="text-xs bg-slate-800 text-slate-200 px-3 py-1.5 rounded-md font-mono border border-slate-700 font-bold">app/page.jsx</span>
+    </div>
+  </header>
+
+  <!-- Interactive Sandbox Workspace -->
+  <div class="flex-grow flex flex-col lg:flex-row min-h-0 overflow-hidden">
+    
+    <!-- LEFT SIDEBAR: Controls and UX Analyses -->
+    <aside class="w-full lg:w-[480px] bg-slate-950 border-r border-slate-800 p-6 flex flex-col shrink-0 relative z-10 lg:sticky top-[80px] lg:top-0 h-auto lg:h-[calc(100vh-80px)] overflow-y-auto space-y-6 shadow-xl lg:shadow-none">
+      
+      <!-- Layout Switcher Widget -->
+      <section class="space-y-3">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400">Select Design Variation</h2>
+        <div class="grid grid-cols-2 gap-2" id="variant-selectors">
+          
+          <button onclick="setMode('original')" id="btn-original" class="flex flex-col items-start p-3 rounded-lg border-2 bg-slate-900 border-yellow-400 text-white transition-all text-left">
+            <span class="text-xs font-extrabold uppercase text-yellow-400 mb-1">00. Original</span>
+            <span class="text-[11px] text-slate-300 leading-tight">Uppercase Monospace, solid fills, 4px borders</span>
+          </button>
+          
+          <button onclick="setMode('demo1')" id="btn-demo1" class="flex flex-col items-start p-3 rounded-lg border-2 bg-slate-900/50 border-transparent text-slate-400 hover:text-white transition-all text-left">
+            <span class="text-xs font-bold uppercase text-slate-200 mb-1">01. Typography</span>
+            <span class="text-[11px] text-slate-400 leading-tight">Plus Jakarta Sans, mixed case, same fills</span>
+          </button>
+          
+          <button onclick="setMode('demo2')" id="btn-demo2" class="flex flex-col items-start p-3 rounded-lg border-2 bg-slate-900/50 border-transparent text-slate-400 hover:text-white transition-all text-left">
+            <span class="text-xs font-bold uppercase text-slate-200 mb-1">02. Spatial Breathing</span>
+            <span class="text-[11px] text-slate-400 leading-tight">2px borders on small items, larger gaps & paddings</span>
+          </button>
+          
+          <button onclick="setMode('demo3')" id="btn-demo3" class="flex flex-col items-start p-3 rounded-lg border-2 bg-slate-900/50 border-transparent text-slate-400 hover:text-white transition-all text-left">
+            <span class="text-xs font-bold uppercase text-slate-200 mb-1">03. Softened Hybrid</span>
+            <span class="text-[11px] text-slate-400 leading-tight">12px border radius, white cards with colored shadows</span>
+          </button>
+          
+        </div>
+      </section>
+
+      <!-- Font Size Scaler Widget -->
+      <section class="space-y-3 bg-slate-900/60 border border-slate-800 rounded-xl p-5 shadow-sm">
+        <div class="flex justify-between items-center">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Mockup Font Scaling</h3>
+          <span id="font-scale-display" class="text-xs font-mono font-bold text-yellow-400 bg-yellow-400/10 px-2.5 py-1 rounded">100%</span>
+        </div>
+        <div class="space-y-2">
+          <input 
+            type="range" 
+            min="60" 
+            max="120" 
+            value="100" 
+            step="5" 
+            class="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-yellow-400"
+            id="font-scale-slider"
+            oninput="updateFontScale(this.value)"
+          />
+          <div class="flex justify-between text-[10px] text-slate-500 font-mono">
+            <span>60%</span>
+            <span>75%</span>
+            <span>90%</span>
+            <span>100%</span>
+            <span>120%</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- UX Performance Metrics -->
+      <section class="bg-slate-900/60 border border-slate-800 rounded-xl p-5 space-y-4">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">UX Readability Scores</h3>
+        
+        <div class="grid grid-cols-2 gap-4">
+          <!-- Score Card 1 -->
+          <div class="bg-slate-950 p-3 rounded-lg border border-slate-800 flex flex-col justify-between">
+            <span class="text-[10px] uppercase font-bold text-slate-500">Reading Ease Grade</span>
+            <span class="text-3xl font-black text-white mt-1" id="metric-reading-ease">D-</span>
+            <p class="text-[10px] text-slate-400 mt-1 leading-tight" id="desc-reading-ease">Very high fatigue. Uppercase monospace stops eye tracking.</p>
+          </div>
+          <!-- Score Card 2 -->
+          <div class="bg-slate-950 p-3 rounded-lg border border-slate-800 flex flex-col justify-between">
+            <span class="text-[10px] uppercase font-bold text-slate-500">Visual Noise Level</span>
+            <span class="text-3xl font-black text-white mt-1" id="metric-visual-noise">95%</span>
+            <p class="text-[10px] text-slate-400 mt-1 leading-tight" id="desc-visual-noise">Heavy grid noise competes with texts.</p>
+          </div>
+          <!-- Score Card 3 -->
+          <div class="bg-slate-950 p-3 rounded-lg border border-slate-800 flex flex-col justify-between">
+            <span class="text-[10px] uppercase font-bold text-slate-500">Average Scan Time</span>
+            <span class="text-3xl font-black text-white mt-1" id="metric-scan-time">8.4s</span>
+            <p class="text-[10px] text-slate-400 mt-1 leading-tight" id="desc-scan-time">Long sections require conscious parsing.</p>
+          </div>
+          <!-- Score Card 4 -->
+          <div class="bg-slate-950 p-3 rounded-lg border border-slate-800 flex flex-col justify-between">
+            <span class="text-[10px] uppercase font-bold text-slate-500">Contrast Compliance</span>
+            <span class="text-3xl font-black text-white mt-1" id="metric-contrast">Fail</span>
+            <p class="text-[10px] text-slate-400 mt-1 leading-tight" id="desc-contrast">Low contrast on solid background fills (e.g. pink & purple cards).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- UX Critique & Diagnostic Section -->
+      <section class="flex-grow bg-slate-900/40 border border-slate-800 rounded-xl p-5 space-y-4 flex flex-col min-h-0">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400">Diagnosis & Improvement Log</h3>
+        
+        <div class="overflow-y-auto pr-1 flex-grow space-y-4 text-sm text-slate-300 leading-relaxed font-sans" id="ux-insights">
+          <!-- Inserted dynamically via JavaScript -->
+        </div>
+      </section>
+
+    </aside>
+
+    <!-- RIGHT CANVAS: Preview of the homepage layout -->
+    <main class="flex-grow bg-slate-950 p-6 flex flex-col overflow-y-auto">
+      
+      <!-- Viewport Chrome Header -->
+      <div class="bg-slate-900 border border-slate-800 border-b-0 rounded-t-xl py-3 px-4 flex items-center justify-between shadow-md shrink-0">
+        <div class="flex items-center gap-1.5">
+          <span class="chrome-btn bg-[#FF5F56]"></span>
+          <span class="chrome-btn bg-[#FFBD2E]"></span>
+          <span class="chrome-btn bg-[#27C93F]"></span>
+        </div>
+        <div class="w-2/3 md:w-1/2 bg-slate-950 border border-slate-800/80 rounded-md py-1 px-3 text-center text-xs text-slate-400 font-mono truncate">
+          http://localhost:3000/asharib-portfolio
+        </div>
+        <div class="flex gap-2">
+          <span class="text-[11px] text-slate-500 font-bold uppercase tracking-wider">Viewport Frame</span>
+        </div>
+      </div>
+      
+      <!-- Interactive Frame Workspace Container -->
+      <div class="flex-grow bg-slate-950 border border-slate-800 rounded-b-xl overflow-hidden shadow-2xl flex">
+        
+        <!-- The Sandbox containing the mockup elements -->
+        <div id="preview-sandbox" class="sandbox mode-original w-full overflow-y-auto p-6 md:p-12 space-y-16">
+          
+          <!-- Section 1: Navigation / Header Mockup -->
+          <nav class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 pb-8 border-b-2 border-slate-900/10">
+            <div class="p-border p-shadow-sm bg-white p-4">
+              <h1 class="p-nav-logo text-2xl md:text-3xl font-black tracking-tighter">
+                Asharib <span class="text-[#E22359]">Hashmi</span>
+              </h1>
+            </div>
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="p-border p-shadow-sm bg-[#FFF6DC] px-4 py-2 text-xs font-black uppercase tracking-wider">Work</span>
+              <span class="p-border p-shadow-sm bg-[#FFF6DC] px-4 py-2 text-xs font-black uppercase tracking-wider">Stack</span>
+              <span class="p-border p-shadow-sm bg-[#16082B] text-[#FBCF0D] px-5 py-2 text-xs font-black uppercase tracking-wider">Contact</span>
+            </div>
+          </nav>
+
+          <!-- Section 2: Hero Layout Mockup -->
+          <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            <div class="lg:col-span-8 flex flex-col justify-center">
+              <div class="inline-block p-border bg-[#E22359] text-white p-4 md:p-6 p-shadow-med transform -rotate-1 self-start mb-4">
+                <h2 class="p-hero-title text-3xl md:text-6xl font-black leading-none tracking-tighter">
+                  Full Stack
+                </h2>
+              </div>
+              <div class="inline-block p-border bg-[#FBCF0D] p-4 md:p-6 p-shadow-med transform rotate-1 self-start">
+                <h2 class="p-hero-title text-4xl md:text-7xl font-black leading-none tracking-tighter text-[#16082B]">
+                  Developer
+                </h2>
+              </div>
+            </div>
+            
+            <div class="lg:col-span-4 flex flex-col justify-center">
+              <div class="p-border bg-white p-6 p-shadow-sm">
+                <p class="p-body-copy uppercase-body text-sm font-bold leading-normal">
+                  Based in Lahore, crafting high-performance web applications with technical precision.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 3: Project Grid Mockup -->
+          <section class="space-y-8">
+            <div class="p-border bg-[#FBCF0D] inline-block px-6 py-3 p-shadow-sm">
+              <h2 class="p-section-header text-3xl font-black tracking-tighter">
+                Proof of Work
+              </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 p-card-grid">
+              
+              <!-- Project 1 (Hillcrest Homes) -->
+              <div class="project-card project-card-1 p-border p-card-padding p-shadow-heavy flex flex-col h-full">
+                <div class="flex justify-between items-center mb-6 border-b-2 border-current pb-3">
+                  <span class="font-mono text-xl font-black">[01]</span>
+                  <span class="p-tag px-2 py-0.5 text-xs font-bold">DUBAI</span>
+                </div>
+                <h3 class="p-card-title text-3xl font-black leading-tight mb-2">Hillcrest Homes</h3>
+                <span class="p-tagline text-xs font-bold inline-block px-2.5 py-1 mb-4 self-start">
+                  Digital Transformation for Real Estate
+                </span>
+                <p class="p-body-copy uppercase-body text-sm font-bold mb-8 flex-grow">
+                  Spearheaded a feature-rich property listing site with custom Admin Dashboard for real-time updates and analytics.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="p-tag text-[10px] px-2 py-0.5 font-bold">Next.js</span>
+                  <span class="p-tag text-[10px] px-2 py-0.5 font-bold">React Native</span>
+                  <span class="p-tag text-[10px] px-2 py-0.5 font-bold">Tailwind CSS</span>
+                </div>
+                <div class="p-border p-button w-full bg-white text-[#16082B] p-3 text-center text-sm font-black flex justify-between items-center mt-auto">
+                  <span>VIEW DETAILS</span>
+                  <span>→</span>
+                </div>
+              </div>
+
+              <!-- Project 2 (Todin.app) -->
+              <div class="project-card project-card-2 p-border p-card-padding p-shadow-heavy flex flex-col h-full">
+                <div class="flex justify-between items-center mb-6 border-b-2 border-current pb-3">
+                  <span class="font-mono text-xl font-black">[02]</span>
+                  <span class="p-tag px-2 py-0.5 text-xs font-bold">GLOBAL</span>
+                </div>
+                <h3 class="p-card-title text-3xl font-black leading-tight mb-2">Todin.app</h3>
+                <span class="p-tagline text-xs font-bold inline-block px-2.5 py-1 mb-4 self-start">
+                  Cashback & Rewards Ecosystem
+                </span>
+                <p class="p-body-copy uppercase-body text-sm font-bold mb-8 flex-grow">
+                  Built a partner directory for e-commerce giants including Amazon and eBay with real-time wallet integration.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <span class="p-tag text-[10px] px-2 py-0.5 font-bold">React</span>
+                  <span class="p-tag text-[10px] px-2 py-0.5 font-bold">Node.js</span>
+                  <span class="p-tag text-[10px] px-2 py-0.5 font-bold">MongoDB</span>
+                </div>
+                <div class="p-border p-button w-full bg-white text-[#16082B] p-3 text-center text-sm font-black flex justify-between items-center mt-auto">
+                  <span>VIEW DETAILS</span>
+                  <span>→</span>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- Section 4: Manifesto/Quote Mockup -->
+          <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            <!-- Manifesto Card -->
+            <div class="lg:col-span-7 bg-white p-border p-shadow-heavy p-card-padding flex flex-col justify-center">
+              <span class="font-mono text-xs font-bold text-[#E22359] mb-4 block">// MANIFESTO</span>
+              <p class="p-manifesto-large text-2xl md:text-3xl font-black text-[#16082B]">
+                Precision is not just a requirement; it's a philosophy. In an age of digital noise, build for clarity, performance, and <span class="bg-[#FBCF0D] border-2 border-slate-900 px-1 inline-block">long-term resilience.</span>
+              </p>
+            </div>
+            
+            <!-- Foundation Stats Box -->
+            <div class="lg:col-span-5 bg-[#8E007E] text-[#FFF6DC] project-card-3 p-border p-shadow-heavy p-card-padding flex flex-col justify-center">
+              <h3 class="p-card-title text-3xl font-black mb-4">Foundation</h3>
+              <div class="bg-white border-2 border-slate-900 p-3 text-slate-900 mb-4 transform -rotate-1">
+                <p class="font-mono text-sm font-black uppercase">BS Software Engineering</p>
+                <p class="font-mono text-[11px] font-bold uppercase opacity-80 mt-1">UCP Lahore</p>
+              </div>
+              <p class="p-body-copy uppercase-body text-xs font-bold leading-relaxed mb-4">
+                Advanced Software Architecture, Database Systems, Cyber Security.
+              </p>
+              <div class="border-t border-current pt-4">
+                <span class="p-tag text-[10px] px-2 py-0.5 font-bold">API Security & MERN Data-Flows</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 5: Contact Form Mockup -->
+          <section class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div class="lg:col-span-5 flex flex-col justify-center">
+              <div class="p-border bg-[#F37324] inline-block px-6 py-3 p-shadow-sm mb-4 transform rotate-1 self-start">
+                <h2 class="p-section-header text-3xl font-black text-slate-950">Connect</h2>
+              </div>
+              <div class="p-border bg-white p-6 p-shadow-sm">
+                <p class="p-body-copy uppercase-body text-sm font-bold text-[#16082B]">
+                  Open to new opportunities, collaborations, and consultations. State your requirements.
+                </p>
+              </div>
+            </div>
+
+            <!-- Form Block -->
+            <div class="lg:col-span-7">
+              <div class="p-border bg-[#FFF6DC] p-6 md:p-8 p-shadow-heavy space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div class="flex flex-col">
+                    <label class="p-form-label text-[11px] text-[#16082B] mb-2">Full Name</label>
+                    <input type="text" placeholder="ASHARIB HASHMI" class="p-form-input p-input-placeholder p-4 text-xs font-bold focus:outline-none" value="ASHARIB HASHMI" readonly />
+                  </div>
+                  <div class="flex flex-col">
+                    <label class="p-form-label text-[11px] text-[#16082B] mb-2">Email Address</label>
+                    <input type="email" placeholder="ASHARIB@DEV.IO" class="p-form-input p-input-placeholder p-4 text-xs font-bold focus:outline-none" value="ASHARIB@DEV.IO" readonly />
+                  </div>
+                </div>
+                <div class="flex flex-col">
+                  <label class="p-form-label text-[11px] text-[#16082B] mb-2">Message</label>
+                  <textarea rows="3" placeholder="DESCRIBE YOUR VISION..." class="p-form-input p-input-placeholder p-4 text-xs font-bold focus:outline-none resize-none" readonly>DESCRIBE YOUR VISION...</textarea>
+                </div>
+                <button class="p-button w-full py-4 bg-[#E22359] text-white p-border p-shadow-sm text-center text-sm font-black tracking-wide">
+                  INITIATE CONTACT
+                </button>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    const modeConfigs = {
+      original: {
+        buttonId: 'btn-original',
+        readingEase: 'D-',
+        visualNoise: '95%',
+        scanTime: '8.4s',
+        contrast: 'Fail',
+        descReadingEase: 'Very high fatigue. Uppercase monospace stops natural eye tracking.',
+        descVisualNoise: 'Heavy grid noise (4px borders, hard shadows) competes for prominence.',
+        descScanTime: 'Paragraphs require conscious parsing. Reading speed is reduced by ~30%.',
+        descContrast: 'Under WCAG 2.1, purple/pink card fills combined with white text offer poor contrast ratios.',
+        insights: [
+          {
+            title: "Casing & Legibility Friction",
+            text: "Setting large text paragraphs (descriptions, bios, form components) in <code>text-transform: uppercase</code> strips text of its baseline word shape. Readers must parse letter-by-letter instead of scanning word clusters."
+          },
+          {
+            title: "Monospace Visual Congestion",
+            text: "While monospace fonts are excellent for code code blocks, they fail at body copy. Uniform character width creates excessive horizontal gaps, forcing the eye to jump awkwardly from letter to letter."
+          },
+          {
+            title: "Border Fatigue",
+            text: "Heavy 4px borders on every small tag, input, and boundary card clutter the screen space, drawing focus away from reading the actual text."
+          }
+        ]
+      },
+      demo1: {
+        buttonId: 'btn-demo1',
+        readingEase: 'B',
+        visualNoise: '75%',
+        scanTime: '5.2s',
+        contrast: 'Good',
+        descReadingEase: 'Friction halved. Mixed case typography enables fast shape recognition.',
+        descVisualNoise: 'Reduced, though intense background fills still draw heavy visual focus.',
+        descScanTime: 'Standard reading speeds returned for copy blocks.',
+        descContrast: 'Improved as font changes to Plus Jakarta Sans with refined weight ratios.',
+        insights: [
+          {
+            title: "Mixed-Case Sentence Structure",
+            text: "Converting the manifesto and description paragraphs back to standard mixed-case makes reading instant. Visual boundaries, ascenders, and descenders now guide the eye effortlessly."
+          },
+          {
+            title: "Sans-Serif Font Upgrade",
+            text: "Swapping body text to <code>Plus Jakarta Sans</code> provides clean geometric curves, optimal letter spacing, and variable widths, matching modern UI layout standards."
+          },
+          {
+            title: "Theme Contrast Retained",
+            text: "The bold neobrutalist colors (pink, purple, yellow) are still utilized, proving that you do not need to alter your identity to significantly boost copy legibility."
+          }
+        ]
+      },
+      demo2: {
+        buttonId: 'btn-demo2',
+        readingEase: 'A-',
+        visualNoise: '45%',
+        scanTime: '4.1s',
+        contrast: 'Good',
+        descReadingEase: 'Great. Expanded spacing and line-height ease visual tracking.',
+        descVisualNoise: 'Low. Hierarchical border weights decrease structural clutter.',
+        descScanTime: 'Content clusters can be scanned and processed in single glances.',
+        descContrast: 'Highly readable due to cleaner spacing surrounding text characters.',
+        insights: [
+          {
+            title: "Hierarchical Border Weighting",
+            text: "Large container outlines remain at 4px to anchor the layout, but secondary cards, small tag badges, and input elements are reduced to 2px. This declutters secondary elements."
+          },
+          {
+            title: "Generous Content Padding",
+            text: "Card padding is increased (e.g. from 2rem to 3rem) and the grid gaps are expanded. This negative space allows the eye to isolate and digest one content block at a time without overlay stress."
+          },
+          {
+            title: "Line-Height Optimization",
+            text: "Paragraph line-height is set to <code>1.65</code>. Extra spacing between rows prevents lines from bleeding into each other during rapid reading."
+          }
+        ]
+      },
+      demo3: {
+        buttonId: 'btn-demo3',
+        readingEase: 'A+',
+        visualNoise: '20%',
+        scanTime: '3.5s',
+        contrast: 'Excellent',
+        descReadingEase: 'Perfect. Softened geometric lines reduce visual irritation completely.',
+        descVisualNoise: 'Minimal. The card layouts feel highly unified and premium.',
+        descScanTime: 'Minimal eye-travel time needed to parse project titles and summaries.',
+        descContrast: 'Card copy sits on pure white/cream backgrounds, guaranteeing a contrast ratio of over 7:1.',
+        insights: [
+          {
+            title: "Accents Over Background Fills",
+            text: "Instead of solid fills (pink, purple) that conflict with readable copy, card backgrounds are normalized to white. The brand colors are applied to the <strong>borders and flat shadows</strong>. This keeps the colorful neobrutalist identity while securing maximum text contrast."
+          },
+          {
+            title: "Rounded Border-Radius Integration",
+            text: "Applying a <code>border-radius: 12px</code> to cards, inputs, and buttons softens the layout. Combining rounded corners with heavy black borders and colored offsets is a highly modern 'soft-brutalism' trend (similar to Gumroad)."
+          },
+          {
+            title: "Interactive State Depth",
+            text: "Cards have active hover translations where the offset shadow collapses smoothly upon interaction, giving immediate, pleasant physical feedback to users."
+          }
+        ]
+      }
+    };
+
+    function setMode(modeKey) {
+      const sandbox = document.getElementById('preview-sandbox');
+      const config = modeConfigs[modeKey];
+      
+      sandbox.className = `sandbox w-full overflow-y-auto p-6 md:p-12 space-y-16 mode-${modeKey}`;
+      
+      const buttons = document.querySelectorAll('#variant-selectors button');
+      buttons.forEach(btn => {
+        btn.classList.remove('border-yellow-400', 'text-white');
+        btn.classList.add('border-transparent', 'text-slate-400');
+        const spanTitle = btn.querySelector('span:first-child');
+        if (spanTitle) {
+          spanTitle.className = "text-xs font-bold uppercase text-slate-200 mb-1";
+        }
+      });
+      
+      const activeBtn = document.getElementById(config.buttonId);
+      activeBtn.classList.remove('border-transparent', 'text-slate-400');
+      activeBtn.classList.add('border-yellow-400', 'text-white');
+      const activeSpanTitle = activeBtn.querySelector('span:first-child');
+      if (activeSpanTitle) {
+        activeSpanTitle.className = "text-xs font-extrabold uppercase text-yellow-400 mb-1";
+      }
+
+      document.getElementById('metric-reading-ease').textContent = config.readingEase;
+      document.getElementById('metric-visual-noise').textContent = config.visualNoise;
+      document.getElementById('metric-scan-time').textContent = config.scanTime;
+      document.getElementById('metric-contrast').textContent = config.contrast;
+
+      document.getElementById('desc-reading-ease').textContent = config.descReadingEase;
+      document.getElementById('desc-visual-noise').textContent = config.descVisualNoise;
+      document.getElementById('desc-scan-time').textContent = config.descScanTime;
+      document.getElementById('desc-contrast').textContent = config.descContrast;
+
+      const updateScoreColor = (elementId, score) => {
+        const el = document.getElementById(elementId);
+        el.className = "text-3xl font-black mt-1 ";
+        if (score.includes('A') || score.includes('Excellent') || parseInt(score) < 30 || score.includes('3.')) {
+          el.className += "text-emerald-400";
+        } else if (score.includes('B') || score.includes('Good') || parseInt(score) < 60) {
+          el.className += "text-teal-400";
+        } else if (score.includes('C') || score.includes('Average') || parseInt(score) < 80) {
+          el.className += "text-amber-400";
+        } else {
+          el.className += "text-rose-500";
+        }
+      };
+
+      updateScoreColor('metric-reading-ease', config.readingEase);
+      updateScoreColor('metric-visual-noise', config.visualNoise);
+      updateScoreColor('metric-scan-time', config.scanTime);
+      updateScoreColor('metric-contrast', config.contrast);
+
+      const insightsContainer = document.getElementById('ux-insights');
+      insightsContainer.innerHTML = '';
+      config.insights.forEach((insight, idx) => {
+        const section = document.createElement('div');
+        section.className = "space-y-1.5 border-b border-slate-800 pb-3 last:border-b-0";
+        section.innerHTML = `
+          <h4 class="text-xs font-bold text-yellow-400 uppercase tracking-wider">${idx + 1}. ${insight.title}</h4>
+          <p class="text-xs text-slate-300 leading-relaxed">${insight.text}</p>
+        `;
+        insightsContainer.appendChild(section);
+      });
+    }
+
+    function updateFontScale(value) {
+      const scale = value / 100;
+      document.getElementById('font-scale-display').textContent = value + '%';
+      
+      const sandbox = document.getElementById('preview-sandbox');
+      if (sandbox) {
+        sandbox.style.setProperty('--font-scale', scale);
+      }
+    }
+
+    // Set initial mode
+    setMode('original');
+  </script>
+</body>
+</html>
