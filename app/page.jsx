@@ -241,7 +241,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#FFF6DC] text-[#16082B] ">
       <header className="sticky top-0 z-50 bg-[#FFF6DC] border-b-4 border-[#16082B]">
-        <div className="border-b-4 border-[#16082B] bg-[#FBCF0D] px-6 py-2 flex items-center justify-between font-mono font-black uppercase text-xs md:text-sm tracking-widest relative z-50">
+        <div className="border-b-4 border-[#16082B] bg-[#FBCF0D] px-4 py-1 flex items-center justify-between font-mono font-black uppercase text-xs md:text-sm tracking-widest relative z-50">
           <span className="flex items-center gap-2">
             <span className="w-3 h-3 bg-[#E22359] border-2 border-[#16082B] inline-block"></span>
             System Online
@@ -249,29 +249,29 @@ export default function Home() {
           <span className="hidden md:inline-block">Location: Lahore, PK</span>
         </div>
 
-        <div className="px-6 md:px-12 lg:px-20 py-2 md:py-3 max-w-[1600px] mx-auto">
-          <nav className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-            <div className="border-4 border-[#16082B] bg-white py-2 px-4 shadow-[4px_4px_0px_#16082B]">
-              <h1 className="font-serif text-2xl md:text-3xl font-black tracking-tighter uppercase">
+        <div className="px-6 md:px-12 lg:px-20 py-1 md:py-2 max-w-[1600px] mx-auto">
+          <nav className="flex flex-col md:flex-row justify-between items-start md:items-center gap-2 md:gap-4">
+            <div className="border-4 border-[#16082B] bg-white py-1.5 px-3 shadow-[4px_4px_0px_#16082B]">
+              <h1 className="font-serif text-xl md:text-2xl font-black tracking-tighter uppercase">
                 Asharib <span className="text-[#E22359]">Hashmi</span>
               </h1>
             </div>
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2 md:gap-3">
               <a
                 href="#work"
-                className="px-4 py-2 bg-[#FFF6DC] border-4 border-[#16082B] shadow-[3px_3px_0px_#16082B] font-mono text-sm font-black uppercase hover:bg-[#FBCF0D] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-all"
+                className="px-3 py-1.5 bg-[#FFF6DC] border-4 border-[#16082B] shadow-[3px_3px_0px_#16082B] font-mono text-xs md:text-sm font-black uppercase hover:bg-[#FBCF0D] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-all"
               >
                 Work
               </a>
               <a
                 href="#stack"
-                className="px-4 py-2 bg-[#FFF6DC] border-4 border-[#16082B] shadow-[3px_3px_0px_#16082B] font-mono text-sm font-black uppercase hover:bg-[#F37324] hover:text-white active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-all"
+                className="px-3 py-1.5 bg-[#FFF6DC] border-4 border-[#16082B] shadow-[3px_3px_0px_#16082B] font-mono text-xs md:text-sm font-black uppercase hover:bg-[#F37324] hover:text-white active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-all"
               >
                 Stack
               </a>
               <a
                 href="#contact"
-                className="px-6 py-2 bg-[#16082B] text-[#FBCF0D] border-4 border-[#16082B] shadow-[3px_3px_0px_#E22359] font-mono text-sm font-black uppercase active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-all"
+                className="px-4 md:px-6 py-1.5 bg-[#16082B] text-[#FBCF0D] border-4 border-[#16082B] shadow-[3px_3px_0px_#E22359] font-mono text-xs md:text-sm font-black uppercase active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-all"
               >
                 Contact
               </a>
