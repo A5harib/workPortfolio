@@ -48,8 +48,8 @@ function ContactForm() {
         <h3 className="font-serif text-4xl mb-2 font-black tracking-tighter text-[#16082B] uppercase">
           Transmission Sent
         </h3>
-        <p className="font-mono text-lg font-bold text-[#16082B]">
-          AWAITING RESPONSE
+        <p className="font-sans text-lg font-bold text-[#16082B]">
+          Awaiting response
         </p>
       </div>
     );
@@ -68,8 +68,8 @@ function ContactForm() {
           <input
             required
             type="text"
-            placeholder="ASHARIB HASHMI"
-            className="w-full bg-white border-4 border-[#16082B] p-4 font-mono text-sm font-bold text-[#16082B] shadow-[4px_4px_0px_#16082B] focus:outline-none focus:bg-[#FBCF0D] focus:shadow-[6px_6px_0px_#E22359] transition-all uppercase placeholder:opacity-40"
+            placeholder="Asharib Hashmi"
+            className="w-full bg-white border-4 border-[#16082B] p-4 font-sans text-sm font-bold text-[#16082B] shadow-[4px_4px_0px_#16082B] focus:outline-none focus:bg-[#FBCF0D] focus:shadow-[6px_6px_0px_#E22359] transition-all placeholder:opacity-40"
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
           />
@@ -81,8 +81,8 @@ function ContactForm() {
           <input
             required
             type="email"
-            placeholder="ASHARIB@DEV.IO"
-            className="w-full bg-white border-4 border-[#16082B] p-4 font-mono text-sm font-bold text-[#16082B] shadow-[4px_4px_0px_#16082B] focus:outline-none focus:bg-[#FBCF0D] focus:shadow-[6px_6px_0px_#E22359] transition-all uppercase placeholder:opacity-40"
+            placeholder="asharib@dev.io"
+            className="w-full bg-white border-4 border-[#16082B] p-4 font-sans text-sm font-bold text-[#16082B] shadow-[4px_4px_0px_#16082B] focus:outline-none focus:bg-[#FBCF0D] focus:shadow-[6px_6px_0px_#E22359] transition-all placeholder:opacity-40"
             value={formData.email}
             onChange={(e) =>
               setFormData({ ...formData, email: e.target.value })
@@ -97,8 +97,8 @@ function ContactForm() {
         <textarea
           required
           rows={5}
-          placeholder="DESCRIBE YOUR VISION..."
-          className="w-full bg-white border-4 border-[#16082B] p-4 font-mono text-sm font-bold text-[#16082B] shadow-[4px_4px_0px_#16082B] focus:outline-none focus:bg-[#FBCF0D] focus:shadow-[6px_6px_0px_#E22359] transition-all uppercase placeholder:opacity-40 resize-none"
+          placeholder="Describe your vision..."
+          className="w-full bg-white border-4 border-[#16082B] p-4 font-sans text-sm font-bold text-[#16082B] shadow-[4px_4px_0px_#16082B] focus:outline-none focus:bg-[#FBCF0D] focus:shadow-[6px_6px_0px_#E22359] transition-all placeholder:opacity-40 resize-none"
           value={formData.message}
           onChange={(e) =>
             setFormData({ ...formData, message: e.target.value })
@@ -120,7 +120,7 @@ function ContactForm() {
         )}
       </button>
       {status === "error" && (
-        <div className="bg-[#16082B] text-[#FBCF0D] font-mono p-4 font-bold border-4 border-[#E22359] uppercase text-center">
+        <div className="bg-[#16082B] text-[#FBCF0D] font-sans p-4 font-bold border-4 border-[#E22359] text-center">
           Transmission Failed. Please retry.
         </div>
       )}
@@ -245,7 +245,7 @@ export default function Home() {
           <span className="flex items-center gap-2">
             <span className="w-3 h-3 bg-[#E22359] border-2 border-[#16082B] inline-block"></span>
             System Online
-          </span>
+              </span>
           <span className="hidden md:inline-block">Location: Lahore, PK</span>
         </div>
 
@@ -259,19 +259,19 @@ export default function Home() {
             <div className="flex flex-wrap items-center gap-2 md:gap-3">
               <a
                 href="#work"
-                className="px-3 py-1.5 bg-[#FFF6DC] border-4 border-[#16082B] shadow-[3px_3px_0px_#16082B] font-mono text-xs md:text-sm font-black uppercase hover:bg-[#FBCF0D] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-all"
+                className="px-3 py-1.5 bg-[#FFF6DC] border-4 border-[#16082B] shadow-[3px_3px_0px_#16082B] font-sans text-xs md:text-sm font-black uppercase hover:bg-[#FBCF0D] active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-all"
               >
                 Work
               </a>
               <a
                 href="#stack"
-                className="px-3 py-1.5 bg-[#FFF6DC] border-4 border-[#16082B] shadow-[3px_3px_0px_#16082B] font-mono text-xs md:text-sm font-black uppercase hover:bg-[#F37324] hover:text-white active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-all"
+                className="px-3 py-1.5 bg-[#FFF6DC] border-4 border-[#16082B] shadow-[3px_3px_0px_#16082B] font-sans text-xs md:text-sm font-black uppercase hover:bg-[#F37324] hover:text-white active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-all"
               >
                 Stack
               </a>
               <a
                 href="#contact"
-                className="px-4 md:px-6 py-1.5 bg-[#16082B] text-[#FBCF0D] border-4 border-[#16082B] shadow-[3px_3px_0px_#E22359] font-mono text-xs md:text-sm font-black uppercase active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-all"
+                className="px-4 md:px-6 py-1.5 bg-[#16082B] text-[#FBCF0D] border-4 border-[#16082B] shadow-[3px_3px_0px_#E22359] font-sans text-xs md:text-sm font-black uppercase active:translate-x-[3px] active:translate-y-[3px] active:shadow-none transition-all"
               >
                 Contact
               </a>
@@ -283,22 +283,40 @@ export default function Home() {
       <div className="p-6 md:p-12 lg:p-20 max-w-[1600px] mx-auto">
 
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-48">
-          <div className="lg:col-span-8">
-            <div className="inline-block border-4 border-[#16082B] bg-[#E22359] text-white p-4 md:p-8 shadow-[12px_12px_0px_#16082B] mb-8 transform -rotate-2">
+          {/* Left Title Column with entrance animations */}
+          <div className="lg:col-span-8 flex flex-col justify-center">
+            <motion.div
+              initial={{ opacity: 0, x: -100, rotate: -6 }}
+              animate={{ opacity: 1, x: 0, rotate: -2 }}
+              transition={{ type: "spring", stiffness: 100, damping: 12, delay: 0.1 }}
+              className="inline-block border-4 border-[#16082B] bg-[#E22359] text-white p-4 md:p-8 shadow-[12px_12px_0px_#16082B] mb-8 self-start"
+            >
               <h2 className="font-serif text-4xl md:text-8xl lg:text-[7rem] font-black leading-none tracking-tighter uppercase">
                 Full Stack
               </h2>
-            </div>
+            </motion.div>
             <br />
-            <div className="inline-block border-4 border-[#16082B] bg-[#FBCF0D] p-4 md:p-8 shadow-[12px_12px_0px_#16082B] transform rotate-1">
+            <motion.div
+              initial={{ opacity: 0, x: -100, rotate: -3 }}
+              animate={{ opacity: 1, x: 0, rotate: 1 }}
+              transition={{ type: "spring", stiffness: 100, damping: 12, delay: 0.25 }}
+              className="inline-block border-4 border-[#16082B] bg-[#FBCF0D] p-4 md:p-8 shadow-[12px_12px_0px_#16082B] self-start"
+            >
               <h2 className="font-serif text-5xl md:text-8xl lg:text-[8rem] font-black leading-none tracking-tighter uppercase text-[#16082B]">
                 Developer
               </h2>
-            </div>
+            </motion.div>
           </div>
+
+          {/* Right Bento Column */}
           <div className="lg:col-span-4 flex flex-col justify-end">
-            <div className="border-4 border-[#16082B] bg-white p-8 shadow-[8px_8px_0px_#16082B]">
-              <p className="font-mono text-lg font-bold mb-8 uppercase leading-snug">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ type: "spring", stiffness: 80, damping: 15, delay: 0.4 }}
+              className="border-4 border-[#16082B] bg-white p-8 shadow-[8px_8px_0px_#16082B]"
+            >
+              <p className="font-sans text-lg font-bold mb-8 leading-snug">
                 Based in Lahore, crafting high-performance web applications with
                 technical precision.
               </p>
@@ -322,8 +340,77 @@ export default function Home() {
                   <LinkedinIcon size={24} />
                 </a>
               </div>
+            </motion.div>
+
+            {/* Sub-Bento Status Grid */}
+            <div className="grid grid-cols-2 gap-4 mt-6">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ type: "spring", stiffness: 100, delay: 0.55 }}
+                className="border-4 border-[#16082B] bg-[#FBCF0D] p-4 shadow-[4px_4px_0px_#16082B] font-mono text-xs font-black uppercase text-[#16082B] flex flex-col justify-center"
+              >
+                <span className="text-[9px] text-[#16082B]/60 tracking-wider mb-1">Availability</span>
+                <span className="text-xs md:text-sm font-black flex items-center gap-1.5">
+                  <span className="h-2.5 w-2.5 bg-[#E22359] border-2 border-[#16082B] rounded-full inline-block animate-pulse"></span>
+                  OPEN FOR GIGS
+                </span>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ type: "spring", stiffness: 100, delay: 0.65 }}
+                className="border-4 border-[#16082B] bg-[#8E007E] text-[#FFF6DC] p-4 shadow-[4px_4px_0px_#16082B] font-mono text-xs font-black uppercase flex flex-col justify-center"
+              >
+                <span className="text-[9px] text-[#FFF6DC]/60 tracking-wider mb-1">Experience</span>
+                <span className="text-xs md:text-sm font-black">3+ YEARS EXPERT</span>
+              </motion.div>
             </div>
           </div>
+
+          {/* Full-Width Terminal Monitor Console */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.75 }}
+            className="col-span-1 lg:col-span-12 mt-12 border-4 border-[#16082B] bg-[#16082B] text-white p-6 shadow-[8px_8px_0px_#E22359] font-mono relative overflow-hidden group hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-[4px_4px_0px_#16082B] transition-all"
+          >
+            {/* Terminal Window Header */}
+            <div className="flex items-center justify-between border-b-2 border-white/20 pb-3 mb-4 select-none">
+              <div className="flex items-center gap-2">
+                <span className="w-3 h-3 bg-[#E22359] border border-white rounded-full"></span>
+                <span className="w-3 h-3 bg-[#FBCF0D] border border-white rounded-full"></span>
+                <span className="w-3 h-3 bg-[#27C93F] border border-white rounded-full"></span>
+              </div>
+              <span className="text-xs text-white/50">asharib@system:~ (bash)</span>
+              <span className="text-xs text-white/30 hidden sm:inline">v1.0.4</span>
+            </div>
+
+            {/* Terminal Content */}
+            <div className="space-y-2 text-xs md:text-sm text-green-400">
+              <p className="text-white/60 select-none"># Fetching developer vitals...</p>
+              <p><span className="text-white">$</span> cat developer.json</p>
+              <div className="pl-4 text-white/80 space-y-1">
+                <p><span className="text-[#FBCF0D]">"entity":</span> "Asharib Hashmi",</p>
+                <p><span className="text-[#FBCF0D]">"role":</span> "Full Stack Web Architect",</p>
+                <p><span className="text-[#FBCF0D]">"base":</span> "Lahore, PK",</p>
+                <p><span className="text-[#FBCF0D]">"focus":</span> "API Security, MERN, Reactive Dataflows",</p>
+                <p><span className="text-[#FBCF0D]">"stack":</span> ["Next.js (App Router)", "Convex", "TypeScript", "TailwindCSS", "Framer Motion", "MongoDB"]</p>
+              </div>
+              <p className="text-white/60 pt-2 select-none"># Monitoring status logs...</p>
+              <p><span className="text-white">$</span> systemctl status asharib-dev</p>
+              <p className="text-emerald-400 flex items-center gap-2">
+                <span className="h-2 w-2 bg-[#27C93F] rounded-full inline-block animate-ping"></span>
+                ● active (running) -- Awaiting new project instructions.
+              </p>
+              <p className="text-white pt-2 flex items-center">
+                <span>$ </span>
+                <span className="ml-2 bg-white text-[#16082B] px-1 select-none">type help for command options</span>
+                <span className="w-2 h-4 bg-green-400 ml-1 inline-block animate-pulse"></span>
+              </p>
+            </div>
+          </motion.div>
         </section>
 
         <section id="work" className="mb-48">
@@ -355,10 +442,10 @@ export default function Home() {
                 <h3 className="font-serif text-4xl md:text-4xl font-black uppercase mb-4 leading-none">
                   {project.title}
                 </h3>
-                <p className="font-mono text-sm font-bold uppercase mb-6 bg-[#16082B] text-white self-start px-3 py-1">
+                <p className="font-sans text-sm font-bold mb-6 bg-[#16082B] text-white self-start px-3 py-1">
                   {project.tagline}
                 </p>
-                <p className="font-mono text-base font-bold mb-12 flex-grow">
+                <p className="font-sans text-base font-bold mb-12 flex-grow">
                   {project.description}
                 </p>
 
@@ -429,14 +516,14 @@ export default function Home() {
                 Foundation
               </h3>
               <div className="bg-white border-4 border-[#16082B] p-4 text-[#16082B] mb-8 shadow-[4px_4px_0px_#FBCF0D] transform -rotate-1">
-                <p className="font-mono text-xl font-black uppercase">
+                <p className="font-sans text-xl font-black">
                   BS Software Engineering
                 </p>
-                <p className="font-mono text-sm font-bold uppercase mt-2">
+                <p className="font-sans text-sm font-bold mt-2">
                   University of Central Punjab
                 </p>
               </div>
-              <p className="font-mono text-base font-bold leading-relaxed mb-8">
+              <p className="font-sans text-base font-bold leading-relaxed mb-8">
                 Advanced Software Architecture, Database Systems, Cyber
                 Security.
               </p>
@@ -444,7 +531,7 @@ export default function Home() {
                 <p className="font-mono text-xs font-black uppercase mb-2">
                   Focus
                 </p>
-                <p className="font-mono text-sm font-bold bg-[#16082B] text-[#F37324] inline-block px-3 py-1">
+                <p className="font-sans text-sm font-bold bg-[#16082B] text-[#F37324] inline-block px-3 py-1">
                   API Security & MERN Data-Flows
                 </p>
               </div>
@@ -455,7 +542,7 @@ export default function Home() {
               <span className="font-mono text-2xl font-black text-[#E22359] mb-6 block">
                 // MANIFESTO
               </span>
-              <p className="font-serif text-3xl md:text-5xl font-black uppercase leading-tight text-[#16082B]">
+              <p className="font-serif text-3xl md:text-5xl font-black leading-tight text-[#16082B]">
                 Precision is not just a requirement; it's a philosophy. In an
                 age of digital noise, build for clarity, performance, and{" "}
                 <span className="bg-[#FBCF0D] px-2 border-2 border-[#16082B]">
@@ -475,7 +562,7 @@ export default function Home() {
                 </h2>
               </div>
               <div className="bg-white border-4 border-[#16082B] p-8 shadow-[8px_8px_0px_#16082B]">
-                <p className="font-mono text-lg font-bold uppercase leading-relaxed text-[#16082B]">
+                <p className="font-sans text-lg font-bold leading-relaxed text-[#16082B]">
                   Open to new opportunities, collaborations, and architecture
                   consultations. State your requirements.
                 </p>
@@ -493,7 +580,7 @@ export default function Home() {
             <p className="font-mono text-sm font-black uppercase text-white mb-2">
               Status
             </p>
-            <p className="font-mono text-xl font-black uppercase text-[#FBCF0D]">
+            <p className="font-sans text-xl font-black text-[#FBCF0D]">
               Open for Architecture
             </p>
           </div>
@@ -502,7 +589,7 @@ export default function Home() {
             <p className="font-mono text-sm font-black uppercase text-[#16082B] mb-4">
               Terminal Endpoints
             </p>
-            <div className="flex flex-col items-end gap-3 font-mono text-sm font-bold uppercase">
+            <div className="flex flex-col items-end gap-3 font-sans text-sm font-bold">
               <span className="flex items-center gap-3 border-b-2 border-[#16082B] pb-1">
                 asharibhashmi7@gmail.com <Mail size={16} strokeWidth={3} />
               </span>

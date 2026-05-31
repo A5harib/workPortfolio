@@ -1,4 +1,4 @@
-import { Playfair_Display, JetBrains_Mono } from "next/font/google";
+import { Playfair_Display, JetBrains_Mono, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { ConvexClientProvider } from "@/components/ConvexClientProvider";
 
@@ -12,6 +12,11 @@ const jetbrains = JetBrains_Mono({
   variable: "--font-mono",
 });
 
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+
 export const metadata = {
   title: "Asharib Hashmi | Full-Stack Developer",
   description:
@@ -20,7 +25,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${jetbrains.variable}`}>
+    <html lang="en" className={`${playfair.variable} ${jetbrains.variable} ${plusJakarta.variable}`}>
       <body className="antialiased selection:bg-white selection:text-black">
         <div className="grain-overlay" />
         <ConvexClientProvider>{children}</ConvexClientProvider>
