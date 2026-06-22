@@ -210,6 +210,18 @@ const projects = [
     color: "#F37324",
     textColor: "#16082B",
   },
+  {
+    id: "05",
+    title: "Elite Stay",
+    location: "Canada",
+    tagline: "Direct Premium Vacation Rentals",
+    description:
+      "Designed and engineered a direct-booking reservation channel for luxury vacation rentals in the Greater Toronto Area (GTA), optimizing user flow for searches and enquiries.",
+    tech: ["Next.js", "Enquiry Pipeline", "Search & Filter Engine"],
+    link: "https://www.elitestay.ca/",
+    color: "#16082B",
+    textColor: "#FFF6DC",
+  },
 ];
 
 const skills = {
